@@ -121,3 +121,83 @@ body {
   border-radius: 6px;
   font-weight: bold;
 }
+/* Topbar */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #0b1220;
+  border-bottom: 1px solid #1f2937;
+}
+
+.topbar-inner {
+  max-width: 1400px;
+  margin: auto;
+  padding: 12px 20px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Logo + menu */
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #22c55e;
+}
+
+/* Search */
+.top-center input {
+  width: 100%;
+  max-width: 520px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #020617;
+  border: 1px solid #1f2937;
+  color: #e5e7eb;
+}
+
+/* Login */
+.login-btn {
+  background: #1f2937;
+  border: none;
+  color: #e5e7eb;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background: #334155;
+}
+
+/* Menu button */
+.icon-btn {
+  background: none;
+  border: none;
+  color: #e5e7eb;
+  font-size: 22px;
+  cursor: pointer;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 260px;
+  height: 100vh;
+  background: #020617;
+  padding: 20px;
+  transition: right 0.3s ease;
+  z-index: 1200;
+}
+
+.sidebar.open {
+  right: 0;
+}
