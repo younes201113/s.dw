@@ -1,49 +1,58 @@
-let current = [...games];
-const grid = document.getElementById("grid");
-const search = document.getElementById("search");
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
+const cards = document.getElementById("cards");
+const filterBtn = document.getElementById("filterBtn");
+
+menuBtn.onclick = () => {
+  sidebar.classList.toggle("open");
+};
+
+const games = [
+  {
+    title: "IGI 2",
+    category: "pc",
+    size: "1.2 GB",
+    ram: "2 GB",
+    img: "https://via.placeholder.com/400x600"
+  },
+  {
+    title: "Call of Duty 4",
+    category: "pc",
+    size: "6 GB",
+    ram: "4 GB",
+    img: "https://via.placeholder.com/400x600"
+  },
+  {
+    title: "GTA San Andreas",
+    category: "pc",
+    size: "4 GB",
+    ram: "4 GB",
+    img: "https://via.placeholder.com/400x600"
+  }
+];
 
 function render(list) {
-  grid.innerHTML = "";
+  cards.innerHTML = "";
   list.forEach(g => {
-    grid.innerHTML += `
+    cards.innerHTML += `
       <div class="card">
-        <img src="${g.image}">
-        <div class="body">
-          <h4>${g.name}</h4>
-          <div class="meta">
-            📦 ${g.size}GB · ⬇️ ${g.downloads} · ⭐ ${g.rating}
-          </div>
-          <a class="download" href="game.html?id=${g.id}">تفاصيل</a>
+        <img src="${g.img}">
+        <div class="card-body">
+          <h4>${g.title}</h4>
+          <p>الحجم: ${g.size} | RAM: ${g.ram}</p>
+          <button>تحميل</button>
         </div>
       </div>
     `;
   });
 }
 
-function filterCategory(cat) {
-  current = games.filter(g => g.category === cat);
-  render(current);
+function selectSection(section) {
+  const filtered = games.filter(g => g.category === section);
+  render(filtered);
+
+  filterBtn.classList.toggle("hidden", section !== "pc");
+  sidebar.classList.remove("open");
 }
 
-function filterGenre(gen) {
-  current = games.filter(g => g.genre.includes(gen));
-  render(current);
-}
-
-function sortBy(type) {
-  current.sort((a,b) => b[type] - a[type]);
-  render(current);
-}
-
-search.oninput = e => {
-  const v = e.target.value.toLowerCase();
-  render(current.filter(g => g.name.toLowerCase().includes(v)));
-};
-
-render(current);
-const menuBtn = document.getElementById("menuBtn");
-const sidebar = document.getElementById("sidebar");
-
-menuBtn.onclick = () => {
-  sidebar.classList.toggle("open");
-};
+render(games);
