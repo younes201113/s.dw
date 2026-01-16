@@ -1,12 +1,84 @@
-/* Topbar improved */
+:root {
+  --bg: #0b1220;
+  --panel: #111827;
+  --card: #020617;
+  --accent: #22c55e;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Tahoma, Arial;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 240px;
+  height: 100vh;
+  background: var(--panel);
+  padding: 20px;
+  transition: transform .3s ease;
+  z-index: 100;
+}
+
+.sidebar.closed {
+  transform: translateX(100%);
+}
+
+.site-title {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+.sidebar h3 {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 20px;
+}
+
+.sidebar button {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--text);
+  text-align: right;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.sidebar button:hover {
+  background: #1f2933;
+}
+
+/* Content */
+.content {
+  margin-right: 240px;
+  padding: 25px;
+}
+
+/* Topbar */
 .topbar {
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 25px;
+  position: relative;
+  margin-bottom: 30px;
 }
 
 .top-right {
+  position: absolute;
+  right: 0;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -28,31 +100,68 @@
   cursor: pointer;
 }
 
-.top-center {
-  display: flex;
-  justify-content: center;
-}
-
 .top-center input {
-  width: 60%;
-  max-width: 420px;
+  width: 420px;
+  max-width: 90%;
+  padding: 10px;
+  background: var(--panel);
+  border: none;
+  color: var(--text);
+  border-radius: 6px;
 }
 
-/* Sidebar toggle (PC style) */
-.sidebar {
-  transition: transform .3s ease;
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
 }
 
-.sidebar.closed {
-  transform: translateX(260px);
+/* Card */
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform .2s;
 }
 
-/* Taller game cover */
+.card:hover {
+  transform: translateY(-5px);
+}
+
 .card img {
-  height: 280px; /* أطول */
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
 }
 
-/* PC-only helpers */
+.card .body {
+  padding: 12px;
+}
+
+.card h4 {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+
+.meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.download {
+  display: block;
+  margin-top: 10px;
+  background: var(--accent);
+  color: #000;
+  text-align: center;
+  padding: 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Helpers */
 .hidden {
   display: none;
 }
