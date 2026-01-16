@@ -1,13 +1,26 @@
-const id = new URLSearchParams(location.search).get("id");
-const game = games.find(g => g.id == id);
-const box = document.getElementById("game");
+const params = new URLSearchParams(window.location.search);
+const gameId = parseInt(params.get("id"));
 
-box.innerHTML = `
-  <h1>${game.name}</h1>
-  <img src="${game.image}" style="max-width:600px;border-radius:12px">
-  <p>${game.desc}</p>
-  <p>📦 الحجم: ${game.size} GB</p>
-  <p>⬇️ التحميلات: ${game.downloads}</p>
-  <p>⭐ التقييم: ${game.rating}</p>
-  <a class="download" href="${game.file}" download>تحميل اللعبة</a>
-`;
+const game = games.find(g => g.id === gameId);
+
+const box = document.getElementById("gameBox");
+
+if (!game) {
+  box.innerHTML = "<p>اللعبة غير موجودة</p>";
+} else {
+  box.innerHTML = `
+    <div class="game-detail">
+      <img src="${game.image}">
+      <div class="info">
+        <h2>${game.name}</h2>
+        <p>📦 الحجم: ${game.size} GB</p>
+        <p>⬇️ التحميلات: ${game.downloads}</p>
+        <p>⭐ التقييم: ${game.rating}</p>
+
+        <a href="${game.download || '#'}" class="download big">
+          تحميل اللعبة
+        </a>
+      </div>
+    </div>
+  `;
+}
