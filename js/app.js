@@ -15,7 +15,7 @@ function render(list) {
           <div class="meta">
             📦 ${g.size}GB · ⬇️ ${g.downloads} · ⭐ ${g.rating}
           </div>
-          <a class="download" href="#">تفاصيل</a>
+          <a class="download" href="game.html?id=${g.id}">تفاصيل</a>
         </div>
       </div>
     `;
