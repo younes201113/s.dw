@@ -7,47 +7,45 @@
 </head>
 <body>
 
-<div class="layout">
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+  <h2 class="site-title">snoydown</h2>
 
-  <!-- Sidebar -->
-  <aside class="sidebar" id="sidebar">
-    <h2>snoydown</h2>
+  <h3>الأقسام</h3>
+  <button onclick="filterCategory('pc')">🎮 ألعاب PC</button>
+  <button onclick="filterCategory('software')">🛠️ برامج</button>
 
-    <h3>الأقسام</h3>
-    <button onclick="filterCategory('pc')">🎮 ألعاب PC</button>
-    <button onclick="filterCategory('software')">🛠️ برامج</button>
+  <div class="pc-only hidden">
+    <h3>التصنيفات</h3>
+    <button onclick="filterGenre('action')">⚔️ أكشن</button>
+    <button onclick="filterGenre('adventure')">🗺️ مغامرة</button>
+  </div>
 
-    <h3 class="pc-only hidden">التصنيفات</h3>
-    <div class="pc-only hidden">
-      <button onclick="filterGenre('action')">⚔️ أكشن</button>
-      <button onclick="filterGenre('adventure')">🗺️ مغامرة</button>
+  <h3>الترتيب</h3>
+  <button onclick="sortBy('size')">📦 الحجم</button>
+  <button onclick="sortBy('downloads')">⬇️ التحميلات</button>
+  <button onclick="sortBy('rating')">⭐ التقييم</button>
+</aside>
+
+<!-- Main -->
+<main class="content">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="top-right">
+      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+      <span class="logo" onclick="resetAll()">snoydown</span>
     </div>
 
-    <h3>الترتيب</h3>
-    <button onclick="sortBy('size')">📦 الحجم</button>
-    <button onclick="sortBy('downloads')">⬇️ التحميلات</button>
-    <button onclick="sortBy('rating')">⭐ التقييم</button>
-  </aside>
-
-  <!-- Content -->
-  <main class="content">
-
-    <!-- Topbar -->
-    <div class="topbar">
-      <div class="top-right">
-        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
-        <span class="logo" onclick="resetAll()">snoydown</span>
-      </div>
-
-      <div class="top-center">
-        <input id="search" placeholder="ابحث عن لعبة...">
-      </div>
+    <div class="top-center">
+      <input id="search" placeholder="ابحث عن لعبة أو برنامج...">
     </div>
+  </div>
 
-    <div id="grid" class="grid"></div>
-  </main>
+  <!-- Grid -->
+  <div id="grid" class="grid"></div>
 
-</div>
+</main>
 
 <script src="js/data.js"></script>
 <script src="js/app.js"></script>
