@@ -187,4 +187,116 @@ function initNavigation() {
             // إظهار القسم المناسب
             const category = this.getAttribute('data-category');
             showSection(category);
-            
+        });
+    });
+}
+
+// دالة لعرض القسم المحدد
+function showSection(sectionId) {
+    // إخفاء جميع الأقسام
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // إظهار القسم المحدد
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+    }
+    
+    // إظهار أو إخفاء زر التصفية
+    const filterContainer = document.getElementById('filterContainer');
+    if (filterContainer) {
+        if (sectionId.includes('games')) {
+            filterContainer.style.display = 'block';
+        } else {
+            filterContainer.style.display = 'none';
+        }
+    }
+}
+
+// دالة لتنفيذ البحث
+function performSearch() {
+    const searchInput = document.querySelector('.search-input');
+    const query = searchInput.value.trim().toLowerCase();
+    
+    if (query.length < 2) {
+        alert('الرجاء إدخال كلمة بحث مكونة من حرفين على الأقل');
+        return;
+    }
+    
+    const results = window.gameData.filter(item => 
+        item.title.toLowerCase().includes(query) || 
+        item.description.toLowerCase().includes(query) ||
+        item.subcategory.toLowerCase().includes(query)
+    );
+    
+    if (results.length === 0) {
+        alert('لم يتم العثور على نتائج لبحثك');
+        return;
+    }
+    
+    // عرض نتائج البحث في قسم الأكثر تحميلاً
+    const topGamesGrid = document.getElementById('topGamesGrid');
+    if (topGamesGrid) {
+        fillGrid('topGamesGrid', results.slice(0, 8));
+    }
+    
+    showSection('top-games');
+    
+    // تحديث القائمة النشطة
+    const navLinks = document.querySelectorAll('.main-nav a');
+    navLinks.forEach(link => link.classList.remove('active'));
+    const topGamesLink = document.querySelector('.main-nav a[data-category="top-games"]');
+    if (topGamesLink) {
+        topGamesLink.classList.add('active');
+    }
+}
+
+// دالة لتصفية حسب التصنيف
+function filterByCategory(category, subcategory) {
+    // تحديث زر التصفية إذا كان في قسم الألعاب
+    const filterOptions = document.getElementById('filterOptions');
+    if (filterOptions && category.includes('games')) {
+        filterOptions.querySelectorAll('.filter-option').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-filter') === subcategory) {
+                btn.classList.add('active');
+            }
+        });
+        
+        applyGameFilter(subcategory);
+    }
+    
+    // إظهار القسم المناسب
+    let targetSection = '';
+    
+    if (category === 'pc-games' || category === 'mobile-games') {
+        targetSection = 'top-games';
+    } else if (category === 'programs') {
+        targetSection = 'top-programs';
+    } else if (category === 'apps') {
+        targetSection = 'top-apps';
+    } else if (category === 'apk') {
+        targetSection = 'top-apk';
+    }
+    
+    if (targetSection) {
+        // تحديث القائمة النشطة
+        const navLinks = document.querySelectorAll('.main-nav a');
+        navLinks.forEach(link => link.classList.remove('active'));
+        const targetLink = document.querySelector(`.main-nav a[data-category="${targetSection}"]`);
+        if (targetLink) {
+            targetLink.classList.add('active');
+        }
+        
+        showSection(targetSection);
+    }
+}
+
+// جعل الدوال متاحة عالمياً لاستخدامها في data.js
+window.initNavigation = initNavigation;
+window.showSection = showSection;
+window.filterByCategory = filterByCategory;
+window.performSearch = performSearch;
