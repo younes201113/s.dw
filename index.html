@@ -9,27 +9,33 @@
 </head>
 <body>
     <!-- الشريط العلوي -->
-    <header class="main-header">
-        <div class="header-container">
-            <!-- زر فتح القائمة الجانبية -->
-            <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
+    <!-- في الهيدر، عدل الشعار ليكون رابطاً -->
+ <header class="main-header">
+    <div class="header-container">
+        <!-- زر فتح القائمة الجانبية -->
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <!-- شعار الموقع كزر للعودة -->
+        <a href="index.html" class="logo">
+            <div class="logo-content">
+                <!-- إذا عندك صورة شعار -->
+                <!-- <img src="assets/logo.png" alt="شعار الموقع"> -->
+                <!-- أو نص فقط -->
+                <span class="logo-text">تحميلاتي</span>
+                <span class="logo-home"><i class="fas fa-home"></i></span>
+            </div>
+        </a>
+        
+        <!-- شريط البحث -->
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="ابحث عن الألعاب والتطبيقات...">
+            <button class="search-btn">
+                <i class="fas fa-search"></i>
             </button>
-            
-            <!-- شعار الموقع -->
-            <div class="logo">
-                <img src="assets/logo.png" alt="شعار الموقع">
-                <span>تحميلاتي</span>
-            </div>
-            
-            <!-- شريط البحث -->
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="ابحث عن الألعاب والتطبيقات...">
-                <button class="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
         </div>
+     </div>
     </header>
 
     <!-- القائمة الجانبية -->
