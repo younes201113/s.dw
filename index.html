@@ -147,5 +147,97 @@
 
     <script src="data.js"></script>
     <script src="script.js"></script>
+    <!-- قبل إغلاق body في index.html -->
+<!-- زر العودة للأعلى -->
+<button class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- زر العودة السريع للقسم الأول -->
+<button class="quick-back-btn" id="quickBackToTop">
+    <i class="fas fa-angle-double-up"></i>
+</button>
+
+<!-- زر التنقل السريع للهاتف -->
+<button class="quick-nav-mobile" id="quickNavMobile">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- قائمة التنقل السريع للهاتف -->
+<div class="mobile-quick-nav" id="mobileQuickNav">
+    <div class="mobile-nav-header">
+        <h3>انتقل سريعاً</h3>
+        <button class="close-mobile-nav" id="closeMobileNav">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="mobile-nav-links">
+        <a href="#top-games"><i class="fas fa-gamepad"></i> ألعاب الأكثر تحميلاً</a>
+        <a href="#top-rated-games"><i class="fas fa-star"></i> ألعاب الأعلى تقييماً</a>
+        <a href="#top-programs"><i class="fas fa-desktop"></i> برامج الأكثر تحميلاً</a>
+        <a href="#top-rated-programs"><i class="fas fa-chart-line"></i> برامج الأعلى تقييماً</a>
+        <a href="#top-apps"><i class="fas fa-mobile-alt"></i> تطبيقات الأكثر تحميلاً</a>
+        <a href="#top-rated-apps"><i class="fas fa-thumbs-up"></i> تطبيقات الأعلى تقييماً</a>
+        <a href="#top-apk"><i class="fas fa-shield-alt"></i> APK الأكثر تحميلاً</a>
+        <a href="#top"><i class="fas fa-home"></i> أعلى الصفحة</a>
+    </div>
+</div>
+
+<script>
+    // أزرار التنقل
+    document.addEventListener('DOMContentLoaded', function() {
+        const backToTopBtn = document.getElementById('backToTop');
+        const quickBackToTopBtn = document.getElementById('quickBackToTop');
+        const quickNavMobileBtn = document.getElementById('quickNavMobile');
+        const closeMobileNavBtn = document.getElementById('closeMobileNav');
+        const mobileQuickNav = document.getElementById('mobileQuickNav');
+        
+        // زر العودة للأعلى
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+                quickBackToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+                quickBackToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // زر العودة السريع للقسم الأول
+        quickBackToTopBtn.addEventListener('click', function() {
+            const firstSection = document.querySelector('.content-section');
+            if (firstSection) {
+                firstSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+        
+        // قائمة التنقل السريع للهاتف
+        quickNavMobileBtn.addEventListener('click', function() {
+            mobileQuickNav.classList.add('active');
+        });
+        
+        closeMobileNavBtn.addEventListener('click', function() {
+            mobileQuickNav.classList.remove('active');
+        });
+        
+        // إغلاق القائمة عند النقر خارجها
+        document.addEventListener('click', function(event) {
+            if (!quickNavMobileBtn.contains(event.target) && !mobileQuickNav.contains(event.target)) {
+                mobileQuickNav.classList.remove('active');
+            }
+        });
+        
+        // إغلاق القائمة عند النقر على رابط
+        mobileQuickNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileQuickNav.classList.remove('active');
+            });
+        });
+    });
+ </script>
 </body>
 </html>
