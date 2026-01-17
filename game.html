@@ -1,27 +1,144 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>تفاصيل اللعبة</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل اللعبة - موقع تحميل الألعاب والتطبيقات</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- الشريط العلوي -->
+    <header class="main-header">
+        <div class="header-container">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logo.png" alt="شعار الموقع">
+                    <span>تحميلاتي</span>
+                </a>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="ابحث عن الألعاب والتطبيقات...">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </header>
 
-<main class="content">
+    <!-- القائمة الجانبية -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>التصنيفات</h3>
+            <button class="close-sidebar" id="closeSidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="sidebar-categories" id="sidebarCategories">
+            <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
+        </div>
+    </aside>
 
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="top-right">
-      <a href="index.html" class="logo">snoydown</a>
+    <!-- محتوى صفحة اللعبة -->
+    <main class="game-detail-container">
+        <!-- زر العودة -->
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-right"></i> العودة للرئيسية
+        </a>
+
+        <!-- تفاصيل اللعبة -->
+        <div class="game-detail">
+            <div class="game-header">
+                <img src="" alt="صورة اللعبة" class="game-main-image" id="gameMainImage">
+                <div class="game-basic-info">
+                    <h1 id="gameTitle">اسم اللعبة</h1>
+                    <div class="game-rating">
+                        <span class="rating-stars" id="ratingStars">
+                            <!-- النجوم سيتم إضافتها بالجافاسكريبت -->
+                        </span>
+                        <span class="rating-text" id="ratingText">تقييم 4.5/5</span>
+                    </div>
+                    <div class="game-downloads">
+                        <i class="fas fa-download"></i>
+                        <span id="gameDownloads">1,000,000+ تحميل</span>
+                    </div>
+                    <div class="game-size">
+                        <i class="fas fa-sd-card"></i>
+                        <span id="gameSize">500 MB</span>
+                    </div>
+                    <button class="download-btn" id="mainDownloadBtn">
+                        <i class="fas fa-download"></i> تحميل اللعبة
+                    </button>
+                </div>
+            </div>
+
+            <div class="game-description">
+                <h2>وصف اللعبة</h2>
+                <p id="gameDescription">وصف اللعبة سيظهر هنا...</p>
+            </div>
+
+            <div class="game-specs">
+                <h2>مواصفات التشغيل</h2>
+                <ul id="gameSpecs">
+                    <!-- المواصفات سيتم إضافتها بالجافاسكريبت -->
+                </ul>
+            </div>
+
+            <div class="game-screenshots">
+                <h2>صور من داخل اللعبة</h2>
+                <div class="screenshots-grid" id="screenshotsGrid">
+                    <!-- الصور سيتم إضافتها بالجافاسكريبت -->
+                </div>
+            </div>
+
+            <div class="game-download-section">
+                <h2>روابط التحميل</h2>
+                <div class="download-links" id="downloadLinks">
+                    <!-- روابط التحميل سيتم إضافتها بالجافاسكريبت -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>© 2023 موقع تحميلاتي. جميع الحقوق محفوظة.</p>
+            <p>جميع الملفات آمنة وخالية من الفيروسات.</p>
+        </div>
+    </footer>
+
+    <!-- نافذة التنبيه (للتحميل) -->
+    <div class="modal" id="downloadModal">
+        <div class="modal-content">
+            <h3>تحميل الملف</h3>
+            <p id="downloadMessage">سيبدأ تحميل الملف قريباً...</p>
+            <button class="btn cancel-btn" id="cancelDownload">إلغاء</button>
+        </div>
     </div>
-  </div>
 
-  <!-- Game Details -->
-  <div id="gameBox" class="game-box"></div>
-
-</main>
-
-<script src="js/data.js"></script>
-<script src="js/game.js"></script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // دالة لتحميل بيانات اللعبة بناءً على معرفها في الرابط
+        document.addEventListener('DOMContentLoaded', function() {
+            // الحصول على معرف اللعبة من الرابط
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameId = urlParams.get('id');
+            
+            if (gameId && window.gameData) {
+                const game = window.gameData.find(g => g.id === gameId);
+                if (game) {
+                    loadGameDetails(game);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
