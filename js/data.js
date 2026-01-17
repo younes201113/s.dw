@@ -8,6 +8,7 @@ const games = [
     downloads: 120000,
     rating: 4.8,
     image: "files/gta.jpg"
+    download: "files/gta-san-andreas.zip"
   },
   {
     id: 2,
