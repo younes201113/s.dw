@@ -1,53 +1,145 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>snoydown</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع تحميل الألعاب والتطبيقات</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- الشريط العلوي -->
+    <header class="main-header">
+        <div class="header-container">
+            <!-- زر فتح القائمة الجانبية -->
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- شعار الموقع -->
+            <div class="logo">
+                <img src="assets/logo.png" alt="شعار الموقع">
+                <span>تحميلاتي</span>
+            </div>
+            
+            <!-- شريط البحث -->
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="ابحث عن الألعاب والتطبيقات...">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </header>
 
-<!-- Sidebar -->
-<aside class="sidebar closed" id="sidebar">
-  <h2 class="site-title">snoydown</h2>
+    <!-- القائمة الجانبية -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>التصنيفات</h3>
+            <button class="close-sidebar" id="closeSidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="sidebar-categories" id="sidebarCategories">
+            <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
+        </div>
+    </aside>
 
-  <h3>الأقسام</h3>
-  <button onclick="filterCategory('pc')">🎮 ألعاب PC</button>
-  <button onclick="filterCategory('software')">🛠️ برامج</button>
+    <!-- القائمة الرئيسية تحت الشريط -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#" class="active" data-category="top-games">الأكثر تحميلاً</a></li>
+            <li><a href="#" data-category="top-rated-games">الأعلى تقييماً</a></li>
+            <li><a href="#" data-category="top-programs">البرامج الأكثر تحميلاً</a></li>
+            <li><a href="#" data-category="top-rated-programs">البرامج الأعلى تقييماً</a></li>
+            <li><a href="#" data-category="top-apps">التطبيقات الأكثر تحميلاً</a></li>
+            <li><a href="#" data-category="top-rated-apps">التطبيقات الأعلى تقييماً</a></li>
+            <li><a href="#" data-category="top-apk">APK الأكثر تحميلاً</a></li>
+        </ul>
+    </nav>
 
-  <div class="pc-only hidden">
-    <h3>التصنيفات</h3>
-    <button onclick="filterGenre('action')">⚔️ أكشن</button>
-    <button onclick="filterGenre('adventure')">🗺️ مغامرة</button>
-  </div>
-
-  <h3>الترتيب</h3>
-  <button onclick="sortBy('size')">📦 الحجم</button>
-  <button onclick="sortBy('downloads')">⬇️ التحميلات</button>
-  <button onclick="sortBy('rating')">⭐ التقييم</button>
-</aside>
-
-<!-- Main -->
-<main class="content">
-
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="top-right">
-      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
-      <span class="logo" onclick="resetAll()">snoydown</span>
+    <!-- زر تصفية الألعاب (يظهر عند اختيار نوع معين) -->
+    <div class="filter-container" id="filterContainer">
+        <button class="filter-toggle" id="filterToggle">
+            <i class="fas fa-filter"></i> تصفية حسب النوع
+        </button>
+        
+        <div class="filter-options" id="filterOptions">
+            <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
+        </div>
     </div>
 
-    <div class="top-center">
-      <input id="search" placeholder="ابحث عن لعبة أو برنامج...">
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <section class="content-section active" id="top-games">
+            <h2 class="section-title">الألعاب الأكثر تحميلاً</h2>
+            <div class="items-grid" id="topGamesGrid">
+                <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
+            </div>
+        </section>
+
+        <section class="content-section" id="top-rated-games">
+            <h2 class="section-title">الألعاب الأعلى تقييماً</h2>
+            <div class="items-grid" id="topRatedGamesGrid">
+                <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
+            </div>
+        </section>
+
+        <section class="content-section" id="top-programs">
+            <h2 class="section-title">البرامج الأكثر تحميلاً</h2>
+            <div class="items-grid" id="topProgramsGrid">
+                <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
+            </div>
+        </section>
+
+        <section class="content-section" id="top-rated-programs">
+            <h2 class="section-title">البرامج الأعلى تقييماً</h2>
+            <div class="items-grid" id="topRatedProgramsGrid">
+                <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
+            </div>
+        </section>
+
+        <section class="content-section" id="top-apps">
+            <h2 class="section-title">التطبيقات الأكثر تحميلاً</h2>
+            <div class="items-grid" id="topAppsGrid">
+                <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
+            </div>
+        </section>
+
+        <section class="content-section" id="top-rated-apps">
+            <h2 class="section-title">التطبيقات الأعلى تقييماً</h2>
+            <div class="items-grid" id="topRatedAppsGrid">
+                <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
+            </div>
+        </section>
+
+        <section class="content-section" id="top-apk">
+            <h2 class="section-title">APK الأكثر تحميلاً</h2>
+            <div class="items-grid" id="topApkGrid">
+                <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
+            </div>
+        </section>
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>© 2023 موقع تحميلاتي. جميع الحقوق محفوظة.</p>
+            <p>جميع الملفات آمنة وخالية من الفيروسات.</p>
+        </div>
+    </footer>
+
+    <!-- نافذة التنبيه (للتحميل) -->
+    <div class="modal" id="downloadModal">
+        <div class="modal-content">
+            <h3>تحميل الملف</h3>
+            <p id="downloadMessage">سيبدأ تحميل الملف قريباً...</p>
+            <button class="btn cancel-btn" id="cancelDownload">إلغاء</button>
+        </div>
     </div>
-  </div>
 
-  <!-- Grid -->
-  <div id="grid" class="grid"></div>
-
-</main>
-
-<script src="js/data.js"></script>
-<script src="js/app.js"></script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
