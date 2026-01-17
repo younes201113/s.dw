@@ -29,7 +29,9 @@ function filterCategory(cat) {
 }
 
 function filterGenre(gen) {
-  current = current.filter(g => g.genre.includes(gen));
+  current = current.filter(g =>
+    Array.isArray(g.genre) && g.genre.includes(gen)
+  );
   render(current);
 }
 
