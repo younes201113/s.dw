@@ -737,3 +737,72 @@ function FORCE_SHOW_GAMES() {
 
 // تشغيل بعد 3 ثواني
 setTimeout(FORCE_SHOW_GAMES, 3000);
+
+// 🔥 الحل النهائي - ظهور الألعاب في الهوم
+function SHOW_GAMES_NOW() {
+    console.log('🎮 محاولة إظهار الألعاب...');
+    
+    // 1. تأكد من وجود بيانات الألعاب
+    if (!window.gameData || window.gameData.length === 0) {
+        console.error('❌ gameData فارغ أو غير محمل');
+        return;
+    }
+    
+    console.log('✅ يوجد', window.gameData.length, 'لعبة');
+    
+    // 2. تعبئة قسم "جديد" إذا كان فارغاً
+    const sections = ['new', 'top-downloads', 'top-rated', 'trending', 'tools'];
+    
+    sections.forEach(section => {
+        const trackId = section + 'Track';
+        const track = document.getElementById(trackId);
+        
+        if (track && track.children.length === 0) {
+            console.log('🔄 تعبئة قسم', section);
+            
+            // أخذ أول 5 ألعاب
+            window.gameData.slice(0, 5).forEach(game => {
+                // إنشاء كارت لعبة
+                const card = document.createElement('div');
+                card.className = 'item-card';
+                card.setAttribute('data-id', game.id);
+                
+                card.innerHTML = `
+                    <img src="${game.image}" alt="${game.title}" class="item-image"
+                         onerror="this.src='https://picsum.photos/300/200?random='+Math.random()">
+                    <div class="item-info">
+                        <h3 class="item-title">${game.title}</h3>
+                        <p class="item-description">${game.description.substring(0, 80)}...</p>
+                        <div class="item-meta">
+                            <span class="item-rating">⭐⭐⭐⭐⭐</span>
+                            <span class="item-downloads">${Math.floor(game.downloads/1000000)}M</span>
+                        </div>
+                        <button class="download-btn" data-id="${game.id}">
+                            تحميل (${game.size})
+                        </button>
+                    </div>
+                `;
+                
+                track.appendChild(card);
+            });
+        }
+    });
+    
+    // 3. إضافة أحداث النقر
+    document.querySelectorAll('.item-card').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.onclick = function(e) {
+            if (!e.target.classList.contains('download-btn')) {
+                const gameId = this.getAttribute('data-id');
+                window.location.href = 'game.html?id=' + gameId;
+            }
+        };
+    });
+    
+    console.log('✅ تم إظهار الألعاب بنجاح');
+}
+
+// تشغيل بعد تحميل الصفحة
+window.addEventListener('load', function() {
+    setTimeout(SHOW_GAMES_NOW, 1000);
+});
