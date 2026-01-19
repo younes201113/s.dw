@@ -3,283 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SnoyDown</title>
-    <meta name="google-site-verification" content="ccOqreB00UP5GWYM3RwQgxXXMZWDLWOEqLvd5niIg5o" />
-    <!-- Meta Tags للSEO -->
-    <meta name="description" content="موقع تحميلاتي - أكبر مكتبة تحميل للألعاب والتطبيقات والبرامج مجاناً. تحميل ألعاب PC، ألعاب جوال، تطبيقات Android، برامج Windows، APK محمي. آمن وسريع.">
-    <meta name="keywords" content="تحميل ألعاب, تحميل تطبيقات, برامج مجانية, ألعاب مجانية, ألعاب PC, ألعاب جوال, APK محمي, تنزيل العاب, تحميل برامج">
-    <meta name="author" content="موقع SnoyDown">
+    <title>SnoyDown - تحميل الألعاب والتطبيقات مجاناً</title>
     
-    <!-- Open Graph للشبكات الاجتماعية -->
-    <meta property="og:title" content="موقع SnoyDown - تحميل الألعاب والتطبيقات مجاناً">
-    <meta property="og:description" content="أكبر مكتبة تحميل للألعاب والتطبيقات والبرامج مجاناً">
-    <meta property="og:image" content="https://via.placeholder.com/1200x630/000635/ffffff?text=SnoyDown">
-    <meta property="og:url" content="https://snoydown.onrender.com">
-    <meta property="og:type" content="website">
-    
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="موقع SnoyDown - تحميل الألعاب والتطبيقات مجاناً">
-    <meta name="twitter:description" content="أكبر مكتبة تحميل للألعاب والتطبيقات والبرامج مجاناً">
-    <meta name="twitter:image" content="https://via.placeholder.com/1200x630/000635/ffffff?text=SnoyDown">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://snoydown.onrender.com">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="https://via.placeholder.com/64x64/00a859/ffffff?text=TD">
-    <link rel="apple-touch-icon" href="https://via.placeholder.com/180x180/00a859/ffffff?text=TD">
-    
-    <!-- Structured Data للبحث -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "موقع SnoyDown",
-      "description": "موقع تحميل الألعاب والتطبيقات والبرامج مجاناً",
-      "url": "https://snoydown.onrender.com",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://yourwebsite.com/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
+    <meta name="description" content="SnoyDown - موقع تحميل الألعاب والتطبيقات مجاناً بأحدث الإصدارات">
+    <meta name="keywords" content="تحميل ألعاب, تنزيل تطبيقات, ألعاب PC, ألعاب موبايل, برامج, APK">
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
     <!-- الشريط العلوي -->
-    <!-- في الهيدر، عدل الشعار ليكون رابطاً -->
- <header class="main-header">
-    <div class="header-container">
-        <!-- زر فتح القائمة الجانبية -->
-        <button class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        
-        <!-- شعار الموقع كزر للعودة -->
-        <a href="index.html" class="logo">
-            <div class="logo-content">
-                <!-- إذا عندك صورة شعار -->
-                <!-- <img src="assets/logo.png" alt="شعار الموقع"> -->
-                <!-- أو نص فقط -->
-                <span class="logo-text">SnoyDown</span>
-                <span class="logo-home"><i class="fas fa-home"></i></span>
-            </div>
-        </a>
-        
-        <!-- شريط البحث -->
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="ابحث عن الألعاب والتطبيقات...">
-            <button class="search-btn">
-                <i class="fas fa-search"></i>
+    <header class="main-header">
+        <div class="header-container">
+            <!-- زر القائمة الجانبية -->
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
             </button>
+            
+            <!-- سلايدر الصور للعرض -->
+            <div class="logo-slider" id="logoSlider">
+                <div class="slides-container">
+                    <!-- الصورة الأولى - يمكن تغييرها لصور من الألعاب -->
+                    <div class="slide active">
+                        <img src="https://via.placeholder.com/400x100/000635/00a859?text=SnoyDown+🎮+ألعاب+جديدة+يومياً" 
+                             alt="SnoyDown - ألعاب جديدة">
+                    </div>
+                    <!-- الصورة الثانية -->
+                    <div class="slide">
+                        <img src="https://via.placeholder.com/400x100/001852/ffffff?text=SnoyDown+⚡+أسرع+التحميلات" 
+                             alt="SnoyDown - أسرع التحميلات">
+                    </div>
+                    <!-- الصورة الثالثة -->
+                    <div class="slide">
+                        <img src="https://via.placeholder.com/400x100/000635/ffffff?text=SnoyDown+⭐+أعلى+التقييمات" 
+                             alt="SnoyDown - أعلى التقييمات">
+                    </div>
+                </div>
+                <div class="slider-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                </div>
+            </div>
+            
+            <!-- شريط البحث -->
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="ابحث عن الألعاب والتطبيقات...">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
         </div>
-     </div>
     </header>
 
     <!-- القائمة الجانبية -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <h3>التصنيفات</h3>
+            <h3><i class="fas fa-th-large"></i> تصنيفات SnoyDown</h3>
             <button class="close-sidebar" id="closeSidebar">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        
         <div class="sidebar-categories" id="sidebarCategories">
-            <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
+            <!-- سيتم تعبئته بالجافاسكريبت -->
         </div>
     </aside>
 
-    <!-- القائمة الرئيسية تحت الشريط -->
+    <!-- القوائم الرئيسية الخمس -->
     <nav class="main-nav">
         <ul>
-            <li><a href="#" class="active" data-category="top-games">الأكثر تحميلاً</a></li>
-            <li><a href="#" data-category="top-rated-games">الأعلى تقييماً</a></li>
-            <li><a href="#" data-category="top-programs">البرامج الأكثر تحميلاً</a></li>
-            <li><a href="#" data-category="top-rated-programs">البرامج الأعلى تقييماً</a></li>
-            <li><a href="#" data-category="top-apps">التطبيقات الأكثر تحميلاً</a></li>
-            <li><a href="#" data-category="top-rated-apps">التطبيقات الأعلى تقييماً</a></li>
-            <li><a href="#" data-category="top-apk">APK الأكثر تحميلاً</a></li>
+            <li><a href="#new-section" class="active" data-section="new">
+                <i class="fas fa-fire"></i> جديد
+            </a></li>
+            <li><a href="#top-downloads-section" data-section="top-downloads">
+                <i class="fas fa-download"></i> الأكثر تحميلاً
+            </a></li>
+            <li><a href="#top-rated-section" data-section="top-rated">
+                <i class="fas fa-star"></i> الأعلى تقييماً
+            </a></li>
+            <li><a href="#trending-section" data-section="trending">
+                <i class="fas fa-chart-line"></i> التوصل
+            </a></li>
+            <li><a href="#tools-section" data-section="tools">
+                <i class="fas fa-tools"></i> الأدوات
+            </a></li>
         </ul>
     </nav>
 
-    <!-- زر تصفية الألعاب (يظهر عند اختيار نوع معين) -->
-    <div class="filter-container" id="filterContainer">
-        <button class="filter-toggle" id="filterToggle">
-            <i class="fas fa-filter"></i> تصفية حسب النوع
-        </button>
-        
-        <div class="filter-options" id="filterOptions">
-            <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
-        </div>
-    </div>
-
     <!-- المحتوى الرئيسي -->
     <main class="main-content">
-        <section class="content-section active" id="top-games">
-            <h2 class="section-title">الألعاب الأكثر تحميلاً</h2>
-            <div class="items-grid" id="topGamesGrid">
-                <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
+        
+        <!-- قسم الجديد -->
+        <section class="content-section active" id="new-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-fire"></i> الألعاب والتطبيقات الجديدة
+                </h2>
+                <div class="section-nav">
+                    <button class="nav-btn prev-btn" data-section="new">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="nav-btn next-btn" data-section="new">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="items-slider" id="newSlider">
+                <div class="slider-track" id="newTrack">
+                    <!-- سيتم تعبئته بالجافاسكريبت -->
+                </div>
             </div>
         </section>
 
-        <section class="content-section" id="top-rated-games">
-            <h2 class="section-title">الألعاب الأعلى تقييماً</h2>
-            <div class="items-grid" id="topRatedGamesGrid">
-                <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
+        <!-- قسم الأكثر تحميلاً -->
+        <section class="content-section" id="top-downloads-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-download"></i> الأكثر تحميلاً هذا الأسبوع
+                </h2>
+                <div class="section-nav">
+                    <button class="nav-btn prev-btn" data-section="top-downloads">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="nav-btn next-btn" data-section="top-downloads">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="items-slider" id="topDownloadsSlider">
+                <div class="slider-track" id="topDownloadsTrack">
+                    <!-- سيتم تعبئته بالجافاسكريبت -->
+                </div>
             </div>
         </section>
 
-        <section class="content-section" id="top-programs">
-            <h2 class="section-title">البرامج الأكثر تحميلاً</h2>
-            <div class="items-grid" id="topProgramsGrid">
-                <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
+        <!-- قسم الأعلى تقييماً -->
+        <section class="content-section" id="top-rated-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-star"></i> الأعلى تقييماً
+                </h2>
+                <div class="section-nav">
+                    <button class="nav-btn prev-btn" data-section="top-rated">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="nav-btn next-btn" data-section="top-rated">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="items-slider" id="topRatedSlider">
+                <div class="slider-track" id="topRatedTrack">
+                    <!-- سيتم تعبئته بالجافاسكريبت -->
+                </div>
             </div>
         </section>
 
-        <section class="content-section" id="top-rated-programs">
-            <h2 class="section-title">البرامج الأعلى تقييماً</h2>
-            <div class="items-grid" id="topRatedProgramsGrid">
-                <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
+        <!-- قسم التوصل -->
+        <section class="content-section" id="trending-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-line"></i> الأكثر رواجاً حالياً
+                </h2>
+                <div class="section-nav">
+                    <button class="nav-btn prev-btn" data-section="trending">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="nav-btn next-btn" data-section="trending">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="items-slider" id="trendingSlider">
+                <div class="slider-track" id="trendingTrack">
+                    <!-- سيتم تعبئته بالجافاسكريبت -->
+                </div>
             </div>
         </section>
 
-        <section class="content-section" id="top-apps">
-            <h2 class="section-title">التطبيقات الأكثر تحميلاً</h2>
-            <div class="items-grid" id="topAppsGrid">
-                <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
+        <!-- قسم الأدوات -->
+        <section class="content-section" id="tools-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-tools"></i> أدوات وتطبيقات مفيدة
+                </h2>
+                <div class="section-nav">
+                    <button class="nav-btn prev-btn" data-section="tools">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="nav-btn next-btn" data-section="tools">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="items-slider" id="toolsSlider">
+                <div class="slider-track" id="toolsTrack">
+                    <!-- سيتم تعبئته بالجافاسكريبت -->
+                </div>
             </div>
         </section>
 
-        <section class="content-section" id="top-rated-apps">
-            <h2 class="section-title">التطبيقات الأعلى تقييماً</h2>
-            <div class="items-grid" id="topRatedAppsGrid">
-                <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
-            </div>
-        </section>
-
-        <section class="content-section" id="top-apk">
-            <h2 class="section-title">APK الأكثر تحميلاً</h2>
-            <div class="items-grid" id="topApkGrid">
-                <!-- سيتم تعبئة هذا القسم بالجافاسكريبت -->
-            </div>
-        </section>
     </main>
 
     <!-- الفوتر -->
     <footer class="main-footer">
         <div class="footer-content">
-            <p>© 2023 موقع تحميلاتي. جميع الحقوق محفوظة.</p>
-            <p>جميع الملفات آمنة وخالية من الفيروسات.</p>
+            <div class="footer-logo">
+                <h3><i class="fas fa-gamepad"></i> SnoyDown</h3>
+                <p>موقع تحميل الألعاب والتطبيقات مجاناً</p>
+            </div>
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-info-circle"></i> عن الموقع</a>
+                <a href="#"><i class="fas fa-envelope"></i> اتصل بنا</a>
+                <a href="#"><i class="fas fa-shield-alt"></i> سياسة الخصوصية</a>
+            </div>
+            <p class="copyright">© 2024 SnoyDown. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
-    <!-- نافذة التنبيه (للتحميل) -->
-    <div class="modal" id="downloadModal">
-        <div class="modal-content">
-            <h3>تحميل الملف</h3>
-            <p id="downloadMessage">سيبدأ تحميل الملف قريباً...</p>
-            <button class="btn cancel-btn" id="cancelDownload">إلغاء</button>
-        </div>
-    </div>
+    <!-- أزرار إضافية -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="data.js"></script>
     <script src="script.js"></script>
-    <!-- قبل إغلاق body في index.html -->
-<!-- زر العودة للأعلى -->
-<button class="back-to-top" id="backToTop">
-    <i class="fas fa-arrow-up"></i>
-</button>
-
-<!-- زر العودة السريع للقسم الأول -->
-<button class="quick-back-btn" id="quickBackToTop">
-    <i class="fas fa-angle-double-up"></i>
-</button>
-
-<!-- زر التنقل السريع للهاتف -->
-<button class="quick-nav-mobile" id="quickNavMobile">
-    <i class="fas fa-bars"></i>
-</button>
-
-<!-- قائمة التنقل السريع للهاتف -->
-<div class="mobile-quick-nav" id="mobileQuickNav">
-    <div class="mobile-nav-header">
-        <h3>انتقل سريعاً</h3>
-        <button class="close-mobile-nav" id="closeMobileNav">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
-    <div class="mobile-nav-links">
-        <a href="#top-games"><i class="fas fa-gamepad"></i> ألعاب الأكثر تحميلاً</a>
-        <a href="#top-rated-games"><i class="fas fa-star"></i> ألعاب الأعلى تقييماً</a>
-        <a href="#top-programs"><i class="fas fa-desktop"></i> برامج الأكثر تحميلاً</a>
-        <a href="#top-rated-programs"><i class="fas fa-chart-line"></i> برامج الأعلى تقييماً</a>
-        <a href="#top-apps"><i class="fas fa-mobile-alt"></i> تطبيقات الأكثر تحميلاً</a>
-        <a href="#top-rated-apps"><i class="fas fa-thumbs-up"></i> تطبيقات الأعلى تقييماً</a>
-        <a href="#top-apk"><i class="fas fa-shield-alt"></i> APK الأكثر تحميلاً</a>
-        <a href="#top"><i class="fas fa-home"></i> أعلى الصفحة</a>
-    </div>
-</div>
-
-<script>
-    // أزرار التنقل
-    document.addEventListener('DOMContentLoaded', function() {
-        const backToTopBtn = document.getElementById('backToTop');
-        const quickBackToTopBtn = document.getElementById('quickBackToTop');
-        const quickNavMobileBtn = document.getElementById('quickNavMobile');
-        const closeMobileNavBtn = document.getElementById('closeMobileNav');
-        const mobileQuickNav = document.getElementById('mobileQuickNav');
-        
-        // زر العودة للأعلى
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('visible');
-                quickBackToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-                quickBackToTopBtn.classList.remove('visible');
-            }
-        });
-        
-        backToTopBtn.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        
-        // زر العودة السريع للقسم الأول
-        quickBackToTopBtn.addEventListener('click', function() {
-            const firstSection = document.querySelector('.content-section');
-            if (firstSection) {
-                firstSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-        
-        // قائمة التنقل السريع للهاتف
-        quickNavMobileBtn.addEventListener('click', function() {
-            mobileQuickNav.classList.add('active');
-        });
-        
-        closeMobileNavBtn.addEventListener('click', function() {
-            mobileQuickNav.classList.remove('active');
-        });
-        
-        // إغلاق القائمة عند النقر خارجها
-        document.addEventListener('click', function(event) {
-            if (!quickNavMobileBtn.contains(event.target) && !mobileQuickNav.contains(event.target)) {
-                mobileQuickNav.classList.remove('active');
-            }
-        });
-        
-        // إغلاق القائمة عند النقر على رابط
-        mobileQuickNav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function() {
-                mobileQuickNav.classList.remove('active');
-            });
-        });
-    });
- </script>
 </body>
 </html>
