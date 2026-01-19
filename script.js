@@ -806,3 +806,99 @@ function SHOW_GAMES_NOW() {
 window.addEventListener('load', function() {
     setTimeout(SHOW_GAMES_NOW, 1000);
 });
+// دالة لعرض الألعاب في الأقسام الصحيحة
+function ORGANIZE_GAMES_BY_CATEGORY() {
+    console.log('📊 ترتيب الألعاب حسب التصنيفات...');
+    
+    if (!window.gameData) {
+        console.error('❌ لا توجد بيانات ألعاب');
+        return;
+    }
+    
+    // فصل الألعاب حسب النوع
+    const games = window.gameData.filter(item => item.type === 'game');
+    const programs = window.gameData.filter(item => item.type === 'program');
+    const apps = window.gameData.filter(item => item.type === 'app');
+    const apk = window.gameData.filter(item => item.type === 'apk');
+    
+    console.log(`🎮 الألعاب: ${games.length}`);
+    console.log(`💻 البرامج: ${programs.length}`);
+    console.log(`📱 التطبيقات: ${apps.length}`);
+    console.log(`🛡️ APK: ${apk.length}`);
+    
+    // تعبئة الأقسام
+    fillSection('newTrack', games.slice(0, 5));           // قسم "جديد" (ألعاب)
+    fillSection('topDownloadsTrack', games.slice(0, 5));  // قسم "الأكثر تحميلاً" (ألعاب)
+    fillSection('topRatedTrack', games.slice(0, 5));      // قسم "الأعلى تقييماً" (ألعاب)
+    fillSection('trendingTrack', games.slice(0, 5));      // قسم "التوصل" (ألعاب)
+    fillSection('toolsTrack', [...programs, ...apps, ...apk].slice(0, 5)); // قسم "الأدوات"
+}
+
+// دالة لتعبة قسم معين
+function fillSection(trackId, items) {
+    const track = document.getElementById(trackId);
+    if (!track) {
+        console.error(`❌ القسم ${trackId} غير موجود`);
+        return;
+    }
+    
+    // تنظيف القسم أولاً
+    track.innerHTML = '';
+    
+    // إضافة العناصر
+    items.forEach(item => {
+        const card = createGameCard(item);
+        track.appendChild(card);
+    });
+    
+    console.log(`✅ تم تعبئة ${trackId} بـ ${items.length} عنصر`);
+}
+
+// دالة إنشاء كارت لعبة
+function createGameCard(item) {
+    const card = document.createElement('div');
+    card.className = 'item-card';
+    card.setAttribute('data-id', item.id);
+    card.setAttribute('data-category', item.category);
+    card.setAttribute('data-type', item.type);
+    
+    // أيقونة حسب النوع
+    let icon = '🎮';
+    if (item.type === 'program') icon = '💻';
+    if (item.type === 'app') icon = '📱';
+    if (item.type === 'apk') icon = '🛡️';
+    
+    card.innerHTML = `
+        <div class="item-type-badge">${icon}</div>
+        <img src="${item.image || 'https://picsum.photos/300/200?random='+Math.random()}" 
+             alt="${item.title}" 
+             class="item-image">
+        <div class="item-info">
+            <h3 class="item-title">${item.title}</h3>
+            <p class="item-description">${item.description.substring(0, 80)}...</p>
+            <div class="item-meta">
+                <span class="item-type">${getTypeName(item.type)}</span>
+                <span class="item-downloads">📥 ${formatNumber(item.downloads)}</span>
+            </div>
+            <button class="download-btn" data-id="${item.id}">
+                تحميل (${item.size})
+            </button>
+        </div>
+    `;
+    
+    return card;
+}
+
+// أسماء الأنواع بالعربي
+function getTypeName(type) {
+    const types = {
+        'game': 'لعبة',
+        'program': 'برنامج',
+        'app': 'تطبيق',
+        'apk': 'APK محمي'
+    };
+    return types[type] || type;
+}
+
+// تشغيل الدالة
+setTimeout(ORGANIZE_GAMES_BY_CATEGORY, 2000);
