@@ -3,34 +3,30 @@ const gameData = [
     {
         id: "gta5",
         title: "GTA V",
-        description: "لعبة أكشن ومغامرات في عالم مفتوح مع قصة شيقة وأداء مذهل. العب مع أصدقائك في وضع الأونلاين.",
+        description: "لعبة أكشن ومغامرات في عالم مفتوح من Rockstar Games.",
         category: "pc-games",
         subcategory: "اكشن",
         type: "game",
         downloads: 25000000,
         rating: 4.8,
         size: "95 GB",
-        image: "https://uptogames.net/wp-content/uploads/2021/05/GTA-5-8-150x150.webp",
+        // صور بسيطة تعمل
+        image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co2x7j.jpg",
         screenshots: [
-            "https://uptogames.net/wp-content/uploads/2021/05/GTA-5-1.webp",
-            "https://uptogames.net/wp-content/uploads/2021/05/GTA-5-2.webp",
-            "https://uptogames.net/wp-content/uploads/2021/05/GTA-5-3.webp",
-            "https://uptogames.net/wp-content/uploads/2021/05/GTA-5-4.webp"
+            "https://images.igdb.com/igdb/image/upload/t_screenshot_big/sc5r01.jpg",
+            "https://images.igdb.com/igdb/image/upload/t_screenshot_big/sc5r02.jpg"
         ],
         specs: {
-            cpu: "Intel Core i5-3470 أو AMD FX-8350",
-            ram: "8 GB RAM",
-            gpu: "NVIDIA GTX 660 أو AMD HD 7870",
-            os: "Windows 10",
-            storage: "95 GB مساحة حرة"
+            cpu: "Intel Core i5-3470",
+            ram: "8 GB",
+            gpu: "NVIDIA GTX 660",
+            os: "Windows 10"
         },
         downloadLinks: [
-            { name: "الجزء 1", url: "https://download2435.mediafire.com/jc8ygydc6tkgvI8gmahd1zWoKx6N0PnBS-HDMIsG0x4H0N24VZKrLg91NMBZN5jPWD5sAFgFE359NwpzrXzHCazEvFtvg4Igf1Avlzc8eZDFrB_RXZOSUozQbq6BCXtWZxyIMzFCVbLZzPMSKzFDAAJE7ShLsUjKK5Jnw9NkYnPQ3g/vr10jsh4350pta9/Free+Download+Files.zip", size: "10 GB" },
-            { name: "الجزء 2", url: "https://download2435.mediafire.com/jc8ygydc6tkgvI8gmahd1zWoKx6N0PnBS-HDMIsG0x4H0N24VZKrLg91NMBZN5jPWD5sAFgFE359NwpzrXzHCazEvFtvg4Igf1Avlzc8eZDFrB_RXZOSUozQbq6BCXtWZxyIMzFCVbLZzPMSKzFDAAJE7ShLsUjKK5Jnw9NkYnPQ3g/vr10jsh4350pta9/Free+Download+Files.zip", size: "10 GB" },
-            { name: "الجزء 3", url: "https://download2435.mediafire.com/jc8ygydc6tkgvI8gmahd1zWoKx6N0PnBS-HDMIsG0x4H0N24VZKrLg91NMBZN5jPWD5sAFgFE359NwpzrXzHCazEvFtvg4Igf1Avlzc8eZDFrB_RXZOSUozQbq6BCXtWZxyIMzFCVbLZzPMSKzFDAAJE7ShLsUjKK5Jnw9NkYnPQ3g/vr10jsh4350pta9/Free+Download+Files.zip", size: "10 GB" }
+            { name: "التحميل المباشر", url: "#", size: "95 GB" }
         ],
-        featured: true,
-        trending: true
+        trending: true,
+        addedDate: "2024-01-15"
     },
     {
         id: "valorant",
