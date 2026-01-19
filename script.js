@@ -621,6 +621,32 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('✅ تم تحميل جميع الدوال بنجاح');
 });
+// تشغيل بعد تحميل المحتوى
+setTimeout(() => {
+    console.log('🔍 فحص الصور...');
+    
+    // فحص إذا الصور موجودة
+    const images = document.querySelectorAll('.item-image');
+    console.log(`📸 عدد الصور: ${images.length}`);
+    
+    images.forEach((img, index) => {
+        img.onerror = function() {
+            console.error(`❌ فشل تحميل الصورة ${index}:`, this.src);
+            // وضع صورة بديلة
+            this.src = `https://via.placeholder.com/300x200/000635/ffffff?text=Game${index + 1}`;
+        };
+        
+        img.onload = function() {
+            console.log(`✅ تحميل الصورة ${index}:`, this.src);
+        };
+    });
+    
+    // فحص بيانات الألعاب
+    if (window.gameData) {
+        console.log('🎮 عدد الألعاب:', window.gameData.length);
+        console.log('📋 الألعاب المتاحة:', window.gameData.map(g => g.title));
+    }
+}, 1000);
 
 // ========== جعل الدوال متاحة عالمياً ==========
 window.initLogoSlider = initLogoSlider;
