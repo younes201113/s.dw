@@ -11,10 +11,10 @@ const gameData = [
         rating: 4.8,
         size: "95 GB",
         // صور بسيطة تعمل
-        image: "https://i.ibb.co/mrrH8hTD/707055.jpg",
+        image: "https://i.postimg.cc/vBPGdV4x/842447.jpg",
         screenshots: [
-            "https://i.ibb.co/mrrH8hTD/707055.jpg",
-            "https://i.ibb.co/mrrH8hTD/707055.jpg"
+            "https://i.postimg.cc/vBPGdV4x/842447.jpg",
+            "https://i.postimg.cc/vBPGdV4x/842447.jpg"
         ],
         specs: {
             cpu: "Intel Core i5-3470",
@@ -38,11 +38,11 @@ const gameData = [
         downloads: 15000000,
         rating: 4.5,
         size: "20 GB",
-        image: "https://i.ibb.co/mrrH8hTD/707055.jpg",
+        image: "https://i.postimg.cc/Dwsfb0M8/3037903.jpg",
         screenshots: [
-            "https://i.ibb.co/mrrH8hTD/707055.jpg",
-            "https://i.ibb.co/mrrH8hTD/707055.jpg",
-            "https://i.ibb.co/mrrH8hTD/707055.jpg"
+            "https://i.postimg.cc/Dwsfb0M8/3037903.jpg",
+            "https://i.postimg.cc/wTnTvL05/4962535.jpg",
+            "https://i.postimg.cc/wTnTvL05/4962535.jpg"
         ],
         specs: {
             cpu: "Intel Core 2 Duo E8400",
@@ -67,10 +67,10 @@ const gameData = [
         downloads: 1000000000,
         rating: 4.7,
         size: "2 GB",
-        image: "https://i.ibb.co/mrrH8hTD/707055.jpg",
+        image: "https://i.postimg.cc/6pR6Gqm7/837398.jpg",
         screenshots: [
-            "https://i.ibb.co/mrrH8hTD/707055.jpg",
-            "https://i.ibb.co/mrrH8hTD/707055.jpg"
+            "https://i.postimg.cc/m2K2DC8D/190843.jpg",
+            "https://i.postimg.cc/6pR6Gqm7/837398.jpg"
         ],
         specs: {
             android: "Android 5.1.1 أو أحدث",
