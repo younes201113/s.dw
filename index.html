@@ -22,30 +22,37 @@
             </button>
             
             <!-- سلايدر الصور للعرض -->
-            <div class="logo-slider" id="logoSlider">
-                <div class="slides-container">
-                    <!-- الصورة الأولى - يمكن تغييرها لصور من الألعاب -->
-                    <div class="slide active">
-                        <img src="https://via.placeholder.com/400x100/000635/00a859?text=SnoyDown+🎮+ألعاب+جديدة+يومياً" 
-                             alt="SnoyDown - ألعاب جديدة">
-                    </div>
-                    <!-- الصورة الثانية -->
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/400x100/001852/ffffff?text=SnoyDown+⚡+أسرع+التحميلات" 
-                             alt="SnoyDown - أسرع التحميلات">
-                    </div>
-                    <!-- الصورة الثالثة -->
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/400x100/000635/ffffff?text=SnoyDown+⭐+أعلى+التقييمات" 
-                             alt="SnoyDown - أعلى التقييمات">
-                    </div>
-                </div>
-                <div class="slider-dots">
-                    <span class="dot active" data-slide="0"></span>
-                    <span class="dot" data-slide="1"></span>
-                    <span class="dot" data-slide="2"></span>
-                </div>
+<div class="logo-slider" id="logoSlider">
+    <div class="slides-container">
+        <!-- استخدم CSS بدل الصور الخارجية -->
+        <div class="slide active">
+            <div class="slide-content" style="background: linear-gradient(135deg, #000635, #001852);">
+                <div class="slide-icon">🎮</div>
+                <div class="slide-title">SnoyDown</div>
+                <div class="slide-subtitle">ألعاب جديدة يومياً</div>
             </div>
+        </div>
+        <div class="slide">
+            <div class="slide-content" style="background: linear-gradient(135deg, #001852, #002a69);">
+                <div class="slide-icon">⚡</div>
+                <div class="slide-title">SnoyDown</div>
+                <div class="slide-subtitle">أسرع التحميلات</div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="slide-content" style="background: linear-gradient(135deg, #000635, #001852);">
+                <div class="slide-icon">⭐</div>
+                <div class="slide-title">SnoyDown</div>
+                <div class="slide-subtitle">أعلى التقييمات</div>
+            </div>
+        </div>
+    </div>
+    <div class="slider-dots">
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+        <span class="dot" data-slide="2"></span>
+    </div>
+</div>
             
             <!-- شريط البحث -->
             <div class="search-container">
