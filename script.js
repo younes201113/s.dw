@@ -26,33 +26,202 @@ const categories = {
 let currentCategory = null;
 let currentFilter = null;
 
-// تهيئة الصفحة عند التحميل
-document.addEventListener('DOMContentLoaded', function() {
-    // تهيئة القائمة الجانبية
-    initSidebar();
-    
-    // تهيئة شريط التصفية
-    initFilter();
-    
-    // تهيئة المحتوى الرئيسي
-    initContent();
-    
-    // تهيئة البحث
-    initSearch();
-    
-    // تهيئة التنقل بين الأقسام
-    initNavigation();
-    
-    // تهيئة أزرار التنقل الإضافية
-    initNavigationButtons();
-    
-    // تحميل البيانات إذا كانت موجودة
-    if (typeof window.gameData !== 'undefined') {
-        loadContent();
-    }
-});
+// ========== سلايدر الصور في الهيدر ==========
+function initLogoSlider() {
+    const sliderContainer = document.getElementById('logoSlider');
+    if (!sliderContainer) return;
 
-// تهيئة القائمة الجانبية
+    const slidesContainer = sliderContainer.querySelector('.slides-container');
+    const dots = sliderContainer.querySelectorAll('.dot');
+    let currentSlide = 0;
+    const totalSlides = dots.length;
+
+    // تغيير الصورة
+    function goToSlide(slideIndex) {
+        currentSlide = slideIndex;
+        slidesContainer.style.transform = `translateX(-${currentSlide * 33.333}%)`;
+        
+        // تحديث النقاط
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+
+    // أحداث النقر على النقاط
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+    });
+
+    // التبديل التلقائي كل 5 ثواني
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        goToSlide(currentSlide);
+    }, 5000);
+}
+
+// ========== سلايدرات الأقسام ==========
+const sliders = {};
+
+function initSectionSliders() {
+    // تهيئة كل قسم
+    const sections = ['new', 'top-downloads', 'top-rated', 'trending', 'tools'];
+    
+    sections.forEach(section => {
+        const track = document.getElementById(`${section}Track`);
+        const prevBtn = document.querySelector(`.prev-btn[data-section="${section}"]`);
+        const nextBtn = document.querySelector(`.next-btn[data-section="${section}"]`);
+        
+        if (track) {
+            sliders[section] = {
+                track: track,
+                position: 0,
+                itemWidth: 240,
+                visibleItems: Math.floor(track.parentElement.offsetWidth / 240),
+                totalItems: track.children.length
+            };
+            
+            // أحداث الأزرار
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => slideSection(section, 'prev'));
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => slideSection(section, 'next'));
+            }
+            
+            // السحب بالإصبع (للموبايل)
+            let isDragging = false;
+            let startX;
+            
+            track.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.pageX - track.offsetLeft;
+                track.style.cursor = 'grabbing';
+            });
+            
+            track.addEventListener('mouseleave', () => {
+                isDragging = false;
+                track.style.cursor = 'grab';
+            });
+            
+            track.addEventListener('mouseup', () => {
+                isDragging = false;
+                track.style.cursor = 'grab';
+            });
+            
+            track.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.pageX - track.offsetLeft;
+                const walk = (x - startX) * 2;
+                track.style.transform = `translateX(-${walk}px)`;
+            });
+            
+            // للسحب باللمس
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].pageX;
+            });
+            
+            track.addEventListener('touchmove', (e) => {
+                const x = e.touches[0].pageX;
+                const walk = startX - x;
+                track.style.transform = `translateX(-${walk}px)`;
+            });
+            
+            track.addEventListener('touchend', (e) => {
+                const x = e.changedTouches[0].pageX;
+                const walk = startX - x;
+                if (Math.abs(walk) > 50) {
+                    slideSection(section, walk > 0 ? 'next' : 'prev');
+                } else {
+                    track.style.transform = `translateX(-${sliders[section].position * sliders[section].itemWidth}px)`;
+                }
+            });
+        }
+    });
+}
+
+function slideSection(section, direction) {
+    const slider = sliders[section];
+    if (!slider) return;
+    
+    const maxPosition = slider.totalItems - slider.visibleItems;
+    
+    if (direction === 'next' && slider.position < maxPosition) {
+        slider.position++;
+    } else if (direction === 'prev' && slider.position > 0) {
+        slider.position--;
+    }
+    
+    slider.track.style.transform = `translateX(-${slider.position * slider.itemWidth}px)`;
+    
+    // تحديث حالة الأزرار
+    updateNavButtons(section);
+}
+
+function updateNavButtons(section) {
+    const slider = sliders[section];
+    const prevBtn = document.querySelector(`.prev-btn[data-section="${section}"]`);
+    const nextBtn = document.querySelector(`.next-btn[data-section="${section}"]`);
+    
+    if (prevBtn) {
+        prevBtn.disabled = slider.position === 0;
+    }
+    if (nextBtn) {
+        nextBtn.disabled = slider.position >= slider.totalItems - slider.visibleItems;
+    }
+}
+
+// ========== التنقل بين الأقسام ==========
+function initSectionNavigation() {
+    const navLinks = document.querySelectorAll('.main-nav a');
+    const sections = document.querySelectorAll('.content-section');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // إزالة النشاط من جميع الروابط
+            navLinks.forEach(l => l.classList.remove('active'));
+            // إضافة النشاط للرابط الحالي
+            this.classList.add('active');
+            
+            // إخفاء جميع الأقسام
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // إظهار القسم المطلوب
+            const targetSection = document.getElementById(`${this.dataset.section}-section`);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+    
+    // الكشف عن القسم الظاهر عند التمرير
+    window.addEventListener('scroll', function() {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (scrollY >= (sectionTop - 200)) {
+                current = section.id;
+            }
+        });
+        
+        if (current) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+}
+
+// ========== تهيئة القائمة الجانبية ==========
 function initSidebar() {
     const menuToggle = document.getElementById('menuToggle');
     const closeSidebar = document.getElementById('closeSidebar');
@@ -120,70 +289,33 @@ function initSidebar() {
                     // إغلاق القائمة الجانبية
                     sidebar.classList.remove('active');
                     
-                    // تصفية المحتوى حسب التصنيف
-                    filterByCategory(categoryKey, subcategory);
+                    // البحث عن الألعاب في هذا التصنيف
+                    performCategorySearch(categoryKey, subcategory);
                 });
             });
         }
     }
 }
 
-// تهيئة شريط التصفية
-function initFilter() {
-    const filterToggle = document.getElementById('filterToggle');
-    const filterOptions = document.getElementById('filterOptions');
+// ========== البحث حسب التصنيف ==========
+function performCategorySearch(category, subcategory) {
+    if (!window.gameData) return;
     
-    if (filterToggle && filterOptions) {
-        filterToggle.addEventListener('click', function() {
-            filterOptions.classList.toggle('active');
-        });
-        
-        // إخفاء التصفية عند النقر خارجها
-        document.addEventListener('click', function(event) {
-            if (!filterToggle.contains(event.target) && !filterOptions.contains(event.target)) {
-                filterOptions.classList.remove('active');
-            }
-        });
+    const results = window.gameData.filter(item => 
+        item.category === category && 
+        item.subcategory === subcategory
+    );
+    
+    if (results.length === 0) {
+        alert('لم يتم العثور على نتائج في هذا التصنيف');
+        return;
     }
+    
+    // عرض النتائج في قسم جديد
+    showSearchResults(results, `تصنيف: ${categories[category].title} - ${subcategory}`);
 }
 
-// تهيئة المحتوى الرئيسي
-function initContent() {
-    // تحميل جميع البيانات (هي موجودة في loadContent في data.js)
-    if (typeof window.gameData !== 'undefined') {
-        loadContent();
-    }
-    
-    // التحقق إذا كان هناك رابط في الـ URL
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-        // إذا كان هناك رابط مباشر لقسم معين
-        setTimeout(() => {
-            goToSection(hash);
-            
-            // تحديث القائمة النشطة
-            document.querySelectorAll('.main-nav a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('data-category') === hash) {
-                    link.classList.add('active');
-                }
-            });
-        }, 100);
-    } else {
-        // إذا كان المستخدم في أعلى الصفحة، اجعل أول رابط نشط
-        const firstNavItem = document.querySelector('.main-nav a');
-        if (firstNavItem) {
-            firstNavItem.classList.add('active');
-        }
-    }
-    
-    // مراقبة التمرير لتحديد القسم النشط
-    window.addEventListener('scroll', function() {
-        updateActiveSectionOnScroll();
-    });
-}
-
-// تهيئة البحث
+// ========== البحث العام ==========
 function initSearch() {
     const searchInput = document.querySelector('.search-input');
     const searchBtn = document.querySelector('.search-btn');
@@ -198,187 +330,17 @@ function initSearch() {
     }
 }
 
-// تهيئة التنقل بين الأقسام
-function initNavigation() {
-    const navLinks = document.querySelectorAll('.main-nav a');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // إزالة النشاط من جميع الروابط
-            navLinks.forEach(l => l.classList.remove('active'));
-            
-            // إضافة النشاط للرابط الحالي
-            this.classList.add('active');
-            
-            // الحصول على القسم المستهدف
-            const targetSection = this.getAttribute('data-category');
-            
-            // التمرير السلس إلى القسم
-            goToSection(targetSection);
-        });
-    });
-}
-
-// تهيئة أزرار التنقل الإضافية
-function initNavigationButtons() {
-    const backToTopBtn = document.getElementById('backToTop');
-    const quickBackToTopBtn = document.getElementById('quickBackToTop');
-    const quickNavMobileBtn = document.getElementById('quickNavMobile');
-    const closeMobileNavBtn = document.getElementById('closeMobileNav');
-    const mobileQuickNav = document.getElementById('mobileQuickNav');
-    
-    // زر العودة للأعلى
-    if (backToTopBtn) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('visible');
-                if (quickBackToTopBtn) quickBackToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-                if (quickBackToTopBtn) quickBackToTopBtn.classList.remove('visible');
-            }
-        });
-        
-        backToTopBtn.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-    
-    // زر العودة السريع للقسم الأول
-    if (quickBackToTopBtn) {
-        quickBackToTopBtn.addEventListener('click', function() {
-            goToFirstSection();
-        });
-    }
-    
-    // قائمة التنقل السريع للهاتف
-    if (quickNavMobileBtn && mobileQuickNav) {
-        quickNavMobileBtn.addEventListener('click', function() {
-            mobileQuickNav.classList.add('active');
-        });
-        
-        if (closeMobileNavBtn) {
-            closeMobileNavBtn.addEventListener('click', function() {
-                mobileQuickNav.classList.remove('active');
-            });
-        }
-        
-        // إغلاق القائمة عند النقر خارجها
-        document.addEventListener('click', function(event) {
-            if (quickNavMobileBtn && mobileQuickNav && 
-                !quickNavMobileBtn.contains(event.target) && 
-                !mobileQuickNav.contains(event.target)) {
-                mobileQuickNav.classList.remove('active');
-            }
-        });
-        
-        // إغلاق القائمة عند النقر على رابط
-        if (mobileQuickNav) {
-            mobileQuickNav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileQuickNav.classList.remove('active');
-                });
-            });
-        }
-    }
-}
-
-// دالة للعودة للصفحة الرئيسية
-function goToHomePage() {
-    window.location.href = 'index.html';
-}
-
-// دالة للعودة للقسم الأول
-function goToFirstSection() {
-    const firstSection = document.getElementById('top-games');
-    if (firstSection) {
-        const headerHeight = document.querySelector('.main-header').offsetHeight;
-        const navHeight = document.querySelector('.main-nav').offsetHeight;
-        const offset = headerHeight + navHeight + 20;
-        
-        const targetPosition = firstSection.offsetTop - offset;
-        
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-        
-        // تحديث القائمة النشطة
-        document.querySelectorAll('.main-nav a').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('data-category') === 'top-games') {
-                link.classList.add('active');
-            }
-        });
-    }
-}
-
-// دالة للانتقال لقسم معين
-function goToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-        const headerHeight = document.querySelector('.main-header').offsetHeight;
-        const navHeight = document.querySelector('.main-nav').offsetHeight;
-        const offset = headerHeight + navHeight + 20;
-        
-        const targetPosition = section.offsetTop - offset;
-        
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-        
-        // تحديث القائمة النشطة
-        document.querySelectorAll('.main-nav a').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('data-category') === sectionId) {
-                link.classList.add('active');
-            }
-        });
-        
-        // تحديث الـ URL
-        history.pushState(null, null, `#${sectionId}`);
-    }
-}
-
-// دالة لتحديد القسم النشط أثناء التمرير
-function updateActiveSectionOnScroll() {
-    const sections = document.querySelectorAll('.content-section');
-    const headerHeight = document.querySelector('.main-header').offsetHeight;
-    const navHeight = document.querySelector('.main-nav').offsetHeight;
-    const offset = headerHeight + navHeight + 100;
-    
-    let currentSection = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - offset;
-        const sectionHeight = section.offsetHeight;
-        
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-            currentSection = section.id;
-        }
-    });
-    
-    // تحديث القائمة النشطة
-    if (currentSection) {
-        document.querySelectorAll('.main-nav a').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('data-category') === currentSection) {
-                link.classList.add('active');
-            }
-        });
-    }
-}
-
-// دالة لتنفيذ البحث
 function performSearch() {
     const searchInput = document.querySelector('.search-input');
     const query = searchInput.value.trim().toLowerCase();
     
     if (query.length < 2) {
         alert('الرجاء إدخال كلمة بحث مكونة من حرفين على الأقل');
+        return;
+    }
+    
+    if (!window.gameData) {
+        alert('بيانات الألعاب غير متاحة حالياً');
         return;
     }
     
@@ -393,21 +355,35 @@ function performSearch() {
         return;
     }
     
-    // عرض نتائج البحث في قسم جديد مؤقت
+    showSearchResults(results, `بحث عن: "${query}"`);
+}
+
+function showSearchResults(results, title) {
     const mainContent = document.querySelector('.main-content');
     
+    // إخفاء جميع الأقسام
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.style.display = 'none';
+    });
+    
     // إنشاء قسم نتائج البحث
-    const searchResultsSection = document.createElement('section');
-    searchResultsSection.className = 'content-section active';
-    searchResultsSection.id = 'search-results';
+    let searchResultsSection = document.getElementById('search-results');
+    if (!searchResultsSection) {
+        searchResultsSection = document.createElement('section');
+        searchResultsSection.className = 'content-section active';
+        searchResultsSection.id = 'search-results';
+        mainContent.appendChild(searchResultsSection);
+    }
     
     let resultsHTML = `
-        <h2 class="section-title">نتائج البحث عن: "${query}"</h2>
-        <div class="search-results-info">
-            <p>تم العثور على ${results.length} نتيجة</p>
-            <button class="btn" id="backToAll">العودة لجميع الأقسام</button>
+        <div class="section-header">
+            <h2 class="section-title">${title}</h2>
+            <button class="btn" id="backToAll">
+                <i class="fas fa-arrow-right"></i> العودة للأقسام
+            </button>
         </div>
-        <div class="items-grid" id="searchResultsGrid">
+        <div class="items-slider">
+            <div class="slider-track" id="searchResultsTrack">
     `;
     
     // إضافة نتائج البحث
@@ -416,8 +392,9 @@ function performSearch() {
         const stars = getRatingStars(item.rating);
         
         resultsHTML += `
-            <div class="item-card" data-id="${item.id}" data-category="${item.category}" data-subcategory="${item.subcategory}">
-                <img src="${item.image}" alt="${item.title}" class="item-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/000635/ffffff?text=Error'">
+            <div class="item-card" data-id="${item.id}">
+                <img src="${item.image}" alt="${item.title}" class="item-image" 
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/000635/ffffff?text=صورة'">
                 <div class="item-info">
                     <h3 class="item-title">${item.title}</h3>
                     <p class="item-description">${item.description.substring(0, 100)}...</p>
@@ -433,126 +410,133 @@ function performSearch() {
         `;
     });
     
-    resultsHTML += `</div>`;
+    resultsHTML += `</div></div>`;
     searchResultsSection.innerHTML = resultsHTML;
+    searchResultsSection.style.display = 'block';
     
-    // إخفاء جميع الأقسام الأخرى
-    document.querySelectorAll('.content-section').forEach(section => {
-        section.style.display = 'none';
-    });
-    
-    // إضافة قسم نتائج البحث
-    mainContent.appendChild(searchResultsSection);
-    
-    // إضافة حدث للزر الرجوع
+    // زر العودة
     document.getElementById('backToAll').addEventListener('click', function() {
-        // إظهار جميع الأقسام
+        searchResultsSection.style.display = 'none';
         document.querySelectorAll('.content-section').forEach(section => {
             section.style.display = 'block';
         });
-        
-        // إزالة قسم نتائج البحث
-        searchResultsSection.remove();
-        
-        // التمرير للأعلى
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        
-        // تحديث القائمة النشطة
-        document.querySelectorAll('.main-nav a').forEach(link => {
-            link.classList.remove('active');
-        });
-        document.querySelector('.main-nav a:first-child').classList.add('active');
     });
     
-    // إضافة أحداث لأزرار التحميل في نتائج البحث
+    // تهيئة سلايدر النتائج
     setTimeout(() => {
-        searchResultsSection.querySelectorAll('.download-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const itemId = this.getAttribute('data-id');
-                const item = window.gameData.find(i => i.id === itemId);
-                if (item) {
-                    showDownloadModal(item);
-                }
-            });
-        });
+        initSearchResultsSlider();
     }, 100);
 }
 
-// دالة لتصفية حسب التصنيف
-function filterByCategory(category, subcategory) {
-    // تحديث زر التصفية إذا كان في قسم الألعاب
-    const filterOptions = document.getElementById('filterOptions');
-    if (filterOptions && category.includes('games')) {
-        filterOptions.querySelectorAll('.filter-option').forEach(btn => {
-            btn.classList.remove('active');
-            if (btn.getAttribute('data-filter') === subcategory) {
-                btn.classList.add('active');
+function initSearchResultsSlider() {
+    const track = document.getElementById('searchResultsTrack');
+    if (!track) return;
+    
+    // نفس منطق سلايدرات الأقسام
+    const slider = {
+        track: track,
+        position: 0,
+        itemWidth: 240,
+        visibleItems: Math.floor(track.parentElement.offsetWidth / 240),
+        totalItems: track.children.length
+    };
+    
+    // إضافة أزرار التنقل
+    const sliderContainer = track.parentElement;
+    const navHTML = `
+        <div class="section-nav">
+            <button class="nav-btn prev-btn" id="searchPrev">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="nav-btn next-btn" id="searchNext">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+    `;
+    
+    sliderContainer.insertAdjacentHTML('beforeend', navHTML);
+    
+    // أحداث الأزرار
+    document.getElementById('searchPrev').addEventListener('click', () => {
+        if (slider.position > 0) {
+            slider.position--;
+            track.style.transform = `translateX(-${slider.position * slider.itemWidth}px)`;
+        }
+    });
+    
+    document.getElementById('searchNext').addEventListener('click', () => {
+        if (slider.position < slider.totalItems - slider.visibleItems) {
+            slider.position++;
+            track.style.transform = `translateX(-${slider.position * slider.itemWidth}px)`;
+        }
+    });
+}
+
+// ========== أزرار التنقل الإضافية ==========
+function initNavigationButtons() {
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    if (backToTopBtn) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
             }
         });
         
-        applyGameFilter(subcategory);
-    }
-    
-    // إظهار القسم المناسب
-    let targetSection = '';
-    
-    if (category === 'pc-games' || category === 'mobile-games') {
-        targetSection = 'top-games';
-    } else if (category === 'programs') {
-        targetSection = 'top-programs';
-    } else if (category === 'apps') {
-        targetSection = 'top-apps';
-    } else if (category === 'apk') {
-        targetSection = 'top-apk';
-    }
-    
-    if (targetSection) {
-        // تحديث القائمة النشطة
-        const navLinks = document.querySelectorAll('.main-nav a');
-        navLinks.forEach(link => link.classList.remove('active'));
-        const targetLink = document.querySelector(`.main-nav a[data-category="${targetSection}"]`);
-        if (targetLink) {
-            targetLink.classList.add('active');
-        }
-        
-        goToSection(targetSection);
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     }
 }
 
-// دالة لعرض نافذة التحميل
+// ========== نافذة التحميل ==========
 function showDownloadModal(item) {
-    const modal = document.getElementById('downloadModal');
-    const message = document.getElementById('downloadMessage');
+    const modal = document.createElement('div');
+    modal.className = 'modal active';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <h3>تحميل ${item.title}</h3>
+            <p id="downloadMessage">
+                <strong>${item.title}</strong><br>
+                الحجم: ${item.size}<br>
+                سيبدأ التحميل تلقائياً...
+            </p>
+            <button class="cancel-btn">
+                <i class="fas fa-times"></i> إلغاء
+            </button>
+        </div>
+    `;
     
-    if (modal && message) {
-        message.innerHTML = `
-            <strong>${item.title}</strong><br>
-            الحجم: ${item.size}<br>
-            سيبدأ التحميل تلقائياً...
-        `;
-        
-        modal.classList.add('active');
-        
-        // زر الإلغاء
-        const cancelBtn = document.getElementById('cancelDownload');
-        if (cancelBtn) {
-            cancelBtn.onclick = function() {
-                modal.classList.remove('active');
-            };
+    document.body.appendChild(modal);
+    
+    // زر الإلغاء
+    modal.querySelector('.cancel-btn').addEventListener('click', function() {
+        modal.remove();
+    });
+    
+    // محاكاة التحميل
+    setTimeout(() => {
+        let linksHTML = '<br><strong>روابط التحميل:</strong><br>';
+        item.downloadLinks.forEach(link => {
+            linksHTML += `
+                <a href="${link.url}" class="download-link" target="_blank">
+                    <i class="fas fa-download"></i> ${link.name} (${link.size})
+                </a><br>`;
+        });
+        modal.querySelector('#downloadMessage').innerHTML += linksHTML;
+    }, 1000);
+    
+    // إغلاق بالنقر خارج النافذة
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.remove();
         }
-        
-        // محاكاة التحميل
-        setTimeout(() => {
-            let linksHTML = '<br><strong>روابط التحميل:</strong><br>';
-            item.downloadLinks.forEach(link => {
-                linksHTML += `<a href="${link.url}" style="color: #00a859; display: block; margin: 5px 0;">${link.name} (${link.size})</a>`;
-            });
-            message.innerHTML += linksHTML;
-        }, 1000);
-    }
+    });
 }
 
-// دوال مساعدة
+// ========== دوال مساعدة ==========
 function formatNumber(num) {
     if (num >= 1000000000) {
         return (num / 1000000000).toFixed(1) + 'B';
@@ -585,9 +569,65 @@ function getRatingStars(rating) {
     return stars;
 }
 
-// جعل الدوال متاحة عالمياً لاستخدامها في data.js
-window.initNavigation = initNavigation;
-window.goToSection = goToSection;
-window.filterByCategory = filterByCategory;
+// ========== تهيئة كل شيء ==========
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 SnoyDown يبدأ التحميل...');
+    
+    // 1. تهيئة الأساسيات
+    initSidebar();
+    initSearch();
+    initNavigationButtons();
+    initLogoSlider();
+    
+    // 2. تهيئة التنقل بين الأقسام
+    initSectionNavigation();
+    
+    // 3. تحميل المحتوى من data.js
+    if (typeof window.loadContent === 'function') {
+        console.log('📥 جارٍ تحميل بيانات الألعاب...');
+        window.loadContent();
+        
+        // 4. بعد تحميل المحتوى، تهيئة السلايدرات
+        setTimeout(() => {
+            console.log('🌀 جارٍ تهيئة السلايدرات...');
+            initSectionSliders();
+        }, 500);
+    }
+    
+    // 5. إعادة حساب السلايدرات عند تغيير الحجم
+    window.addEventListener('resize', function() {
+        if (typeof initSectionSliders === 'function') {
+            console.log('🔄 إعادة حساب السلايدرات للحجم الجديد');
+            initSectionSliders();
+        }
+    });
+    
+    // 6. إضافة أحداث لأزرار التحميل
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('download-btn') || 
+            e.target.closest('.download-btn')) {
+            const btn = e.target.classList.contains('download-btn') ? 
+                       e.target : e.target.closest('.download-btn');
+            const itemId = btn.getAttribute('data-id');
+            
+            if (itemId && window.gameData) {
+                const item = window.gameData.find(i => i.id === itemId);
+                if (item) {
+                    showDownloadModal(item);
+                }
+            }
+        }
+    });
+    
+    console.log('✅ تم تحميل جميع الدوال بنجاح');
+});
+
+// ========== جعل الدوال متاحة عالمياً ==========
+window.initLogoSlider = initLogoSlider;
+window.initSectionSliders = initSectionSliders;
+window.initSectionNavigation = initSectionNavigation;
+window.slideSection = slideSection;
 window.performSearch = performSearch;
 window.showDownloadModal = showDownloadModal;
+
+console.log('📄 تم تحميل script.js بنجاح');
