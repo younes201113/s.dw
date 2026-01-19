@@ -631,3 +631,41 @@ window.performSearch = performSearch;
 window.showDownloadModal = showDownloadModal;
 
 console.log('📄 تم تحميل script.js بنجاح');
+
+// في script.js، أضف هذا الكود في نهاية الملف:
+document.addEventListener('click', function(e) {
+    const card = e.target.closest('.item-card');
+    
+    if (card && !e.target.classList.contains('download-btn')) {
+        const gameId = card.getAttribute('data-id');
+        
+        if (gameId) {
+            // الانتقال لصفحة اللعبة
+            window.location.href = `game.html?id=${gameId}`;
+        }
+    }
+});
+
+// تأكد أن كل كارت له data-id
+function createItemCard(item) {
+    const card = document.createElement('div');
+    card.className = 'item-card';
+    card.setAttribute('data-id', item.id); // ⚠️ هذا السطر مهم
+    
+    card.innerHTML = `
+        <img src="${item.image}" alt="${item.title}" class="item-image">
+        <div class="item-info">
+            <h3 class="item-title">${item.title}</h3>
+            <p class="item-description">${item.description.substring(0, 80)}...</p>
+            <div class="item-meta">
+                <span class="item-rating">${getRatingStars(item.rating)}</span>
+                <span class="item-downloads">${formatNumber(item.downloads)}</span>
+            </div>
+            <button class="download-btn" data-id="${item.id}">
+                تحميل (${item.size})
+            </button>
+        </div>
+    `;
+    
+    return card;
+}
