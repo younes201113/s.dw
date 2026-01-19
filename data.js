@@ -754,7 +754,7 @@ window.gameData = gameData;
 
 // تحميل المحتوى عند جاهزية الصفحة
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadContent);
+    document.addEventListener('DOMContentLoaded', window.loadContent);
 } else {
-    loadContent();
+    window.loadContent();
 }
