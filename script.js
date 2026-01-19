@@ -695,3 +695,45 @@ function createItemCard(item) {
     
     return card;
 }
+// حل مشكلة ظهور الألعاب - أضف هذا في النهاية
+function FORCE_SHOW_GAMES() {
+    console.log('🎯 إظهار الألعاب بالقوة...');
+    
+    if (!window.gameData || window.gameData.length === 0) {
+        console.error('❌ لا توجد بيانات ألعاب!');
+        return;
+    }
+    
+    // 1. تعبئة قسم "جديد"
+    const newTrack = document.getElementById('newTrack');
+    if (newTrack && newTrack.children.length === 0) {
+        console.log('🔄 تعبئة قسم الجديد...');
+        window.gameData.slice(0, 5).forEach(game => {
+            const card = createItemCard(game);
+            newTrack.appendChild(card);
+        });
+    }
+    
+    // 2. تعبئة قسم "الأكثر تحميلاً"
+    const topTrack = document.getElementById('topDownloadsTrack');
+    if (topTrack && topTrack.children.length === 0) {
+        console.log('🔄 تعبئة قسم الأكثر تحميلاً...');
+        window.gameData.slice(0, 5).forEach(game => {
+            const card = createItemCard(game);
+            topTrack.appendChild(card);
+        });
+    }
+    
+    // 3. إعادة تهيئة السلايدرات
+    setTimeout(() => {
+        if (typeof initSectionSliders === 'function') {
+            initSectionSliders();
+            console.log('✅ السلايدرات أعيد تهيئتها');
+        }
+    }, 500);
+    
+    console.log('✅ تم إظهار الألعاب');
+}
+
+// تشغيل بعد 3 ثواني
+setTimeout(FORCE_SHOW_GAMES, 3000);
