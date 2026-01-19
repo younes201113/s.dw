@@ -1504,3 +1504,67 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: #008f4c;
 }
+/* تنسيق اللوجو العادي */
+.site-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-color);
+    padding: 8px 16px;
+    border-radius: 10px;
+    transition: all 0.3s;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.logo-content:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+.logo-icon {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(45deg, var(--accent-color), #00ff88);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* للتجاوب */
+@media (max-width: 768px) {
+    .logo-content {
+        gap: 8px;
+        padding: 6px 12px;
+    }
+    
+    .logo-icon {
+        font-size: 1.5rem;
+    }
+    
+    .logo-text {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        display: none;
+    }
+    
+    .logo-icon {
+        font-size: 2rem;
+    }
+}
