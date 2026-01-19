@@ -11,10 +11,10 @@ const gameData = [
         rating: 4.8,
         size: "95 GB",
         // صور بسيطة تعمل
-        image: "https://images.igdb.com/igdb/image/upload/t_cover_big/co2x7j.jpg",
+        image: "https://i.ibb.co/mrrH8hTD/707055.jpg",
         screenshots: [
-            "https://images.igdb.com/igdb/image/upload/t_screenshot_big/sc5r01.jpg",
-            "https://images.igdb.com/igdb/image/upload/t_screenshot_big/sc5r02.jpg"
+            "https://i.ibb.co/mrrH8hTD/707055.jpg",
+            "https://i.ibb.co/mrrH8hTD/707055.jpg"
         ],
         specs: {
             cpu: "Intel Core i5-3470",
@@ -38,11 +38,11 @@ const gameData = [
         downloads: 15000000,
         rating: 4.5,
         size: "20 GB",
-        image: "https://th.bing.com/th/id/ODF.FFPVJ6dLO7g0Tno32UWDJQ?w=32&h=32&qlt=90&pcl=fffffc&r=0&o=6&pid=1.2",
+        image: "https://i.ibb.co/mrrH8hTD/707055.jpg",
         screenshots: [
-            "https://th.bing.com/th/id/R.e285b26b018da31c9be91c913e02684e?rik=7s89tfb%2fQBIR5A&pid=ImgRaw&r=0",
-            "https://th.bing.com/th/id/OIP.HZoXzbh99OAz7TKx2yWFlwHaEK?w=315&h=180&c=7&r=0&o=5&pid=1.7",
-            "https://tse3.mm.bing.net/th/id/OIP.OYotQ7KMypGmnb1CL1oIAgHaEK?pid=ImgDet&w=474&h=266&rs=1&o=7&rm=3"
+            "https://i.ibb.co/mrrH8hTD/707055.jpg",
+            "https://i.ibb.co/mrrH8hTD/707055.jpg",
+            "https://i.ibb.co/mrrH8hTD/707055.jpg"
         ],
         specs: {
             cpu: "Intel Core 2 Duo E8400",
@@ -67,10 +67,10 @@ const gameData = [
         downloads: 1000000000,
         rating: 4.7,
         size: "2 GB",
-        image: "https://img.utdstc.com/icon/ad3/e98/ad3e98abe9de44760d7dfe5f65cd833bd059c163c3cdbe5a8703c2e35a5bb02f:100",
+        image: "https://i.ibb.co/mrrH8hTD/707055.jpg",
         screenshots: [
-            "https://img.utdstc.com/screen/554/199/554199f937c04389e2089ed74eb2114df70cd15e416f3a1cbb98621a9825baca:200",
-            "https://img.utdstc.com/screen/a89/0e7/a890e724f6ead25ae2796f3585ab4ded117bba6257d4337bdcc65185c69a9fa6:200"
+            "https://i.ibb.co/mrrH8hTD/707055.jpg",
+            "https://i.ibb.co/mrrH8hTD/707055.jpg"
         ],
         specs: {
             android: "Android 5.1.1 أو أحدث",
@@ -93,9 +93,9 @@ const gameData = [
         downloads: 500000000,
         rating: 4.6,
         size: "250 MB",
-        image: "https://image.winudf.com/v2/image1/Y29tLnN1cGVyY2VsbC5jbGFzaG9mY2xhbnNfaWNvbl8xNzU5MzIzNDA5XzAwNw/icon.webp?w=320&fakeurl=1&type=.webp",
+        image: "https://i.ibb.co/mrrH8hTD/707055.jpg",
         screenshots: [
-            "https://img.utdstc.com/screen/f49/830/f49830795863850a8e76537b760deb46de57687ece3f82870b673834a55eb2ff:200"
+            "https://i.ibb.co/mrrH8hTD/707055.jpg"
         ],
         specs: {
             android: "Android 4.1 أو أحدث",
@@ -119,10 +119,10 @@ const gameData = [
         downloads: 15000000,
         rating: 4.9,
         size: "3 GB",
-        image: "https://img.utdstc.com/icon/a72/da4/a72da47b9cfb34eac94550bc25fb376dd66066c7ad92aeea4d13e84ac8ec2929:100",
+        image: "https://i.ibb.co/mrrH8hTD/707055.jpg",
         screenshots: [
-            "https://www.bing.com/th/id/OIP.Ti_NOMGVPVUqLLxFr8swtQHaE5?w=263&h=211&c=8&rs=1&qlt=90&r=0&o=6&pid=3.1&rm=2",
-            "https://www.bing.com/th/id/OIP.sbQQO89rcuM4uJbkM5W09wHaEo?w=277&h=211&c=8&rs=1&qlt=90&r=0&o=6&pid=3.1&rm=2"
+            "https://i.ibb.co/mrrH8hTD/707055.jpg",
+            "https://i.ibb.co/mrrH8hTD/707055.jpg"
         ],
         specs: {
             cpu: "Intel أو AMD مع دعم 64-bit",
@@ -148,9 +148,9 @@ const gameData = [
         downloads: 50000000,
         rating: 4.3,
         size: "3 MB",
-        image: "https://img.utdstc.com/icon/e60/55f/e6055f932d15a9451379c6bd0eceee301bd94f867dc7377cb2959be9a6861abd:100",
+        image: "https://i.ibb.co/mrrH8hTD/707055.jpg",
         screenshots: [
-            "https://img.utdstc.com/screen/4e5/9d8/4e59d8496d9403e233d350e6f03119f06f6c9d2470a2b07ad87a3312ce57eae8:200"
+            "https://i.ibb.co/mrrH8hTD/707055.jpg"
         ],
         specs: {
             os: "Windows 7/8/10/11",
@@ -172,9 +172,9 @@ const gameData = [
         downloads: 5000000000,
         rating: 4.4,
         size: "80 MB",
-        image: "https://img.utdstc.com/icon/ce6/4c5/ce64c5fdcab44eb799b11d71e554c06ede50bc8524cc906de9da7c9aed58983b:100",
+        image: "https://i.ibb.co/mrrH8hTD/707055.jpg",
         screenshots: [
-            "https://img.utdstc.com/screen/fbf/746/fbf746a46cfe04e688dfeb8c3e610d4aec1338f9d63ea2d0d5428f3aa28f3d99:200"
+            "https://i.ibb.co/mrrH8hTD/707055.jpg"
         ],
         specs: {
             android: "Android 4.1 أو أحدث",
@@ -197,10 +197,10 @@ const gameData = [
         downloads: 100000000,
         rating: 4.2,
         size: "25 MB",
-        image: "https://img.utdstc.com/icon/b11/7ce/b117ce7ff728bd1bf2883fdffdcb170f487a793a8f65db956649a846861e138c:100",
+        image: "https://i.ibb.co/mrrH8hTD/707055.jpg",
         screenshots: [
-            "https://img.utdstc.com/screen/8c5/563/8c556358775ce4366841923259ecef405db1a949602a545d4deb1ff9c3f43900:200",
-            "https://img.utdstc.com/screen/826/8df/8268df111e2c911ce053dcacb08449620f659e50b31106e99ad84c4d3b16f12e:200"
+            "https://i.ibb.co/mrrH8hTD/707055.jpg",
+            "https://i.ibb.co/mrrH8hTD/707055.jpg"
         ],
         specs: {
             android: "Android 4.4 أو أحدث",
@@ -221,10 +221,10 @@ const gameData = [
         downloads: 85000000,
         rating: 4.6,
         size: "125 GB",
-        image: "https://img.utdstc.com/icon/398/3aa/3983aa6b3ad0e1723ab331d6ef41c6ceb9bdd0d6c93acb57b4ce352c06ddc01b:100",
+        image: "https://i.ibb.co/mrrH8hTD/707055.jpg",
         screenshots: [
-            "https://img.utdstc.com/screen/311/b8d/311b8da9ce2867154790855052e7459aa7ad2041d02d8daeb94f83fa80ea698d:200",
-            "https://img.utdstc.com/screen/862/f9b/862f9b9229b96fa59925e8e931ad448382b657a774e7c5b507419448d5608c7a:200"
+            "https://i.ibb.co/mrrH8hTD/707055.jpg",
+            "https://i.ibb.co/mrrH8hTD/707055.jpg"
         ],
         specs: {
             cpu: "Intel Core i5-2500K أو AMD Ryzen R5 1600X",
@@ -248,10 +248,10 @@ const gameData = [
         downloads: 238000000,
         rating: 4.8,
         size: "1 GB",
-        image: "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/logos/Global-Header_MCCB-Logo_300x51.svg",
+        image: "https://i.ibb.co/mrrH8hTD/707055.jpg",
         screenshots: [
-            "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/screenshots/CREATE_BuildAlmostAnything.png",
-            "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/screenshots/EXPLORE_PDPScreenshotRefresh2024_multipleBiomes_01.png"
+            "https://i.ibb.co/mrrH8hTD/707055.jpg",
+            "https://i.ibb.co/mrrH8hTD/707055.jpg"
         ],
         specs: {
             cpu: "Intel Core i5-4690",
@@ -274,9 +274,9 @@ const gameData = [
         downloads: 25000000,
         rating: 4.7,
         size: "100 MB",
-        image: "https://th.bing.com/th/id/ODF.-g0sg8HWLH6lfjy77LRUug?w=32&h=32&qlt=90&pcl=fffffc&r=0&o=6&pid=1.2",
+        image: "https://i.ibb.co/mrrH8hTD/707055.jpg",
         screenshots: [
-            "https://th.bing.com/th/id/ODF.-g0sg8HWLH6lfjy77LRUug?w=32&h=32&qlt=90&pcl=fffffc&r=0&o=6&pid=1.2"
+            "https://i.ibb.co/mrrH8hTD/707055.jpg"
         ],
         specs: {
             os: "Windows 7/8/10, macOS, Linux",
@@ -297,9 +297,9 @@ const gameData = [
         downloads: 50000000,
         rating: 4.5,
         size: "50 MB",
-        image: "https://img.utdstc.com/icon/4ba/1ef/4ba1ef03c48c81bb20965a85d244c07ec086c20f4ec9a047828e19ecbf245490:100",
+        image: "https://i.ibb.co/mrrH8hTD/707055.jpg",
         screenshots: [
-            "https://img.utdstc.com/screen/9b5/788/9b5788ebd556711506eb976a4fda9f20a8b3ddeb84199f6bbc51708c6f8fd276:200"
+            "https://i.ibb.co/mrrH8hTD/707055.jpg"
         ],
         specs: {
             android: "Android 5.0 أو أحدث",
