@@ -1568,3 +1568,32 @@ html {
         font-size: 2rem;
     }
 }
+/* أيقونة نوع العنصر */
+.item-type-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--accent-color);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.item-card {
+    position: relative;
+}
+
+.item-type {
+    background: var(--secondary-color);
+    color: var(--text-color);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
