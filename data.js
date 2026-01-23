@@ -288,6 +288,34 @@ const gameData = [
         ]
     },
     {
+        id: "Red Dead Redemption 2",
+        title: "Red Dead Redemption 2",
+        description: "لعبة أكشن ومغامرات في عالم مفتوح من Rockstar Games.",
+        category: "pc-games",
+        subcategory: "اكشن",
+        type: "game",
+        downloads: 25000000,
+        rating: 4.8,
+        size: "150 GB",
+        // صور بسيطة تعمل
+        image: "https://uptogames.net/wp-content/uploads/2024/11/Red-Dead-Redemption-2-80x80.webp",
+        screenshots: [
+            "https://tse1.mm.bing.net/th/id/OIP.QKEUB1AjCRXB7_nV1DLYEgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
+            "https://tse4.mm.bing.net/th/id/OIP.DWia3iAzs9PzRi_8BdBaHwHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
+        ],
+        specs: {
+            cpu: "Intel Core i5-2500k",
+            ram: "8 GB",
+            gpu: "NVIDIA GTX 770",
+            os: "Windows 10"
+        },
+        downloadLinks: [
+            { name: "التحميل المباشر", url: "https://cpmlink.co/831eM", size: "150 GB" }
+        ],
+        trending: true,
+        addedDate: "2024-01-15"
+    },
+    {
         id: "spotify",
         title: "Spotify Premium",
         description: "تطبيق الموسيقى الأشهر مع ميزة اللا محدود. استمع لأي أغنية بدون إعلانات وبدون اتصال.",
