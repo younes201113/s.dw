@@ -78,7 +78,7 @@ const gameData = [
             storage: "2 GB مساحة حرة"
         },
         downloadLinks: [
-            { name: "APK مباشر", url: "https://d.apkpure.com/b/APK/com.tencent.ig?version=latest", size: "2 GB" }
+            { name: "APK مباشر", url: "https://cpmlink.co/6ar", size: "2 GB" }
         ],
         featured: true,
         trending: true
