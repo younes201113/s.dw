@@ -23,7 +23,7 @@ const gameData = [
             os: "Windows 10"
         },
         downloadLinks: [
-            { name: "التحميل المباشر", url: "#", size: "95 GB" }
+            { name: "التحميل المباشر", url: "https://otieu.com/4/10507035?url=https://www.instant-gaming.com/en/4211-buy-grand-theft-auto-v-enhanced-pc-rockstar/?igr=uptodown-promo", size: "95 GB" }
         ],
         trending: true,
         addedDate: "2024-01-15"
