@@ -58,6 +58,35 @@ const gameData = [
         trending: true
     },
     {
+        id: "hytale",
+        title: "Hytale",
+        description: "انطلق في مغامرة مصممة للإبداع واللعب معًا. تجمع لعبة Hytale بين حرية العالم المفتوح وحماس ألعاب تقمص الأدوار: استكشف عالماً يولد بشكل إجرائي مليء بالأبراج المحصنة والأسرار ومجموعة متنوعة من المخلوقات، ثم شكله قطعة قطعة.",
+        category: "pc-games",
+        subcategory: "مغامرة",
+        type: "game",
+        downloads: 1460000,
+        rating: 3.9,
+        size: "14 GB",
+        image: "https://hytale.com/static/images/logo.png",
+        screenshots: [
+            "https://cdn.hytale.com/variants/blog_thumb_e9ac7f05f9c5f040aed38eb226a1872d_blog_cover_option2.png",
+            "https://cdn.hytale.com/variants/blog_thumb_4666219169b117610c44205c41707e4f_e208b945a93c8dc6a00a8257309badb9_undergroundjungledinorun_01_raw.png",
+            "https://cdn.hytale.com/variants/blog_thumb_141140f01e6d5efde1b239619412e2d0_image8.png"
+        ],
+        specs: {
+            cpu: "Intel Core i7 3770",
+            ram: "8 GB RAM",
+            gpu: "Intel gtx 960",
+            os: "Windows 7/8/10",
+            storage: "14 GB مساحة حرة"
+        },
+        downloadLinks: [
+            { name: "النسخة الكاملة", url: "https://cpmlink.co/Hylale", size: "14 GB" }
+        ],
+        featured: true,
+        trending: true
+    },
+    {
         id: "pubg_mobile",
         title: "PUBG Mobile",
         description: "لعبة باتل رويال شهيرة على الجوال. 100 لاعب يتقاتلون للبقاء حتى النهاية على جزيرة ضخمة.",
@@ -650,7 +679,7 @@ function filterByCategory(category, subcategory) {
 // دالة لتحميل تفاصيل اللعبة
 function loadGameDetails(game) {
     // تحديث العنوان
-    document.title = `${game.title} - موقع تحميلاتي`;
+    document.title = `${game.title} - SnoyDown`;
     
     // تحديث الصورة الرئيسية
     const mainImage = document.getElementById('gameMainImage');
