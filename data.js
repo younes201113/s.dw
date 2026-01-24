@@ -81,7 +81,7 @@ const gameData = [
             storage: "14 GB مساحة حرة"
         },
         downloadLinks: [
-            { name: "النسخة الكاملة", url: "https://cpmlink.co/Hylale", size: "14 GB" }
+            { name: "النسخة الكاملة", url: "https://ouo.io/r6aO0h", size: "14 GB" }
         ],
         featured: true,
         trending: true
