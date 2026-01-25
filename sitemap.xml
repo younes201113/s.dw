@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://yourwebsite.com/index.html</loc>
+        <loc>https://snoydown.onrender.com/index.html</loc>
         <lastmod>2024-01-15</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://yourwebsite.com/game.html?id=gta5</loc>
+        <loc>https://snoydown.onrender.com/game.html?id=gta5</loc>
         <lastmod>2024-01-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://yourwebsite.com/game.html?id=valorant</loc>
+        <loc>https://snoydown.onrender.com/game.html?id=valorant</loc>
         <lastmod>2024-01-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
