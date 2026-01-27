@@ -110,7 +110,7 @@ const gameData = [
             storage: "110 GB مساحة حرة"
         },
         downloadLinks: [
-            { name: "النسخة الكاملة", url: "https://ouo.io/boFtAe", size: "110 GB" }
+            { name: "النسخة الكاملة", url: "https://ouo.io/LM9AeM", size: "110 GB" }
         ],
         featured: true,
         trending: true
