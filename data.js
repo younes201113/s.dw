@@ -95,7 +95,7 @@ const gameData = [
         type: "game",
         downloads: 1460000,
         rating: 4.8,
-        size: "14 GB",
+        size: "110 GB",
         image: "https://ankergames.net/uploads/poster/09-2024/WSWf6q9dh4.webp",
         screenshots: [
             "https://ankergames.net/uploads/screenshots/02-2025/Forza%20Horizon%205%20AnkerGames_1739187561.webp",
@@ -124,7 +124,7 @@ const gameData = [
         type: "game",
         downloads: 9750000,
         rating: 4.3,
-        size: "14 GB",
+        size: "500 MB",
         image: "https://ankergames.net/uploads/poster/11-2024/hXhDPI5WKs.webp",
         screenshots: [
             "https://ankergames.net/uploads/screenshots/02-2025/Buckshot%20Roulette%20Reviews_1738923855.webp",
@@ -153,7 +153,7 @@ const gameData = [
         type: "game",
         downloads: 11600000,
         rating: 4.6,
-        size: "14 GB",
+        size: "80 GB",
         image: "https://th.bing.com/th/id/OIP.akX4VH7zLeu04YsXiAnWOgHaEK?w=160&h=108&c=7&qlt=90&bgcl=b28c0c&r=0&o=6&pid=13.1",
         screenshots: [
             "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2807960/ca29b92919b323934f6199b8c3fe8454ea697973/ss_ca29b92919b323934f6199b8c3fe8454ea697973.jpg",
@@ -182,7 +182,7 @@ const gameData = [
         type: "game",
         downloads: 1460000,
         rating: 3.9,
-        size: "14 GB",
+        size: "25 GB",
         image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/9a81dc3126c56637297b654f9dcac057cfd79b77/header.jpg?t=1764266628",
         screenshots: [
             "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/ss_e040f74641ac21f15e3ec7c2415fc8b4de0b6bf9.600x338.jpg",
