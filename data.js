@@ -87,6 +87,122 @@ const gameData = [
         trending: true
     },
     {
+        id: "forzahorizon5",
+        title: "Forza Horizon 5",
+        description: "مغامرتك المثالية في عالم Horizon بانتظارك! استكشف المناظر الطبيعية النابضة بالحياة والمتطورة باستمرار في المكسيك مع متعة قيادة لا حدود لها في مئات من أفضل السيارات في العالم.",
+        category: "pc-games",
+        subcategory: "مغامرة",
+        type: "game",
+        downloads: 1460000,
+        rating: 4.8,
+        size: "14 GB",
+        image: "https://ankergames.net/uploads/poster/09-2024/WSWf6q9dh4.webp",
+        screenshots: [
+            "https://ankergames.net/uploads/screenshots/02-2025/Forza%20Horizon%205%20AnkerGames_1739187561.webp",
+            "https://ankergames.net/uploads/screenshots/02-2025/Forza%20Horizon%205%20Online_1739187561.webp",
+            "https://ankergames.net/uploads/screenshots/02-2025/Forza%20Horizon%205%20Reviews_1739187561.webp"
+        ],
+        specs: {
+            cpu: "Intel i5-8400 or AMD Ryzen 5 1500X",
+            ram: "16 GB RAM",
+            gpu: "NVidia GTX 1070, AMD RX 590, OR Intel Arc A750",
+            os: "Windows 10 version 18362.0 or higher",
+            storage: "110 GB مساحة حرة"
+        },
+        downloadLinks: [
+            { name: "النسخة الكاملة", url: "https://ouo.io/boFtAe", size: "110 GB" }
+        ],
+        featured: true,
+        trending: true
+    },
+    {
+        id: "buckshotroulette",
+        title: "Buckshot Roulette",
+        description: "اجلس على طاولة اللعب الجماعي الجديدة رباعية الأطراف. ساوِم. توسّل. اخنِ. كن المنتصر الأخير. اخرج غنيًا. العب الروليت الروسية ببندقية عيار 12. لأن البنادق تُشعِرُك بمتعة أكبر. من 15 إلى 20 دقيقة من اللعب المُكثّف. ادخل الساحة، وخُض ثلاث جولات ضدّ المُوزّع، واخرج بالجائزة. أو لا.",
+        category: "pc-games",
+        subcategory: "اكشن",
+        type: "game",
+        downloads: 9750000,
+        rating: 4.3,
+        size: "14 GB",
+        image: "https://ankergames.net/uploads/poster/11-2024/hXhDPI5WKs.webp",
+        screenshots: [
+            "https://ankergames.net/uploads/screenshots/02-2025/Buckshot%20Roulette%20Reviews_1738923855.webp",
+            "https://ankergames.net/uploads/screenshots/02-2025/Buckshot%20Roulette%20AnkerGames_1738923855.webp",
+            "https://ankergames.net/uploads/screenshots/02-2025/Buckshot%20Roulette%20Online_1738923855.webp"
+        ],
+        specs: {
+            cpu: "Intel Core i5",
+            ram: "4 GB RAM",
+            gpu: "Relatively modern dedicated graphics card (Vulkan support required)",
+            os: "Windows 10",
+            storage: "500 MB مساحة حرة"
+        },
+        downloadLinks: [
+            { name: "النسخة الكاملة", url: "https://ouo.io/5Htk3v", size: "500 MB" }
+        ],
+        featured: true,
+        trending: true
+    },
+    {
+        id: "battlefield 6",
+        title: "Battlefield 6",
+        description: "تجربة حرب شاملة لا مثيل لها. خُض معارك مشاة ضارية. شقّ طريقك في السماء في معارك جوية حامية. دمّر محيطك لتحقيق ميزة استراتيجية. تحكّم بشكل كامل في كل حركة باستخدام نظام القتال الحركي. في حرب الدبابات والطائرات المقاتلة وترسانات الأسلحة الضخمة، سلاحك الأقوى هو فرقتك. هذه هي Battlefield 6. انخرط في حرب شاملة مع قتال المشاة والمركبات، ونظام لعب الفرق القائم على الفئات، وتجربة سمعية بصرية غامرة ومتطورة. حيث تتحد الطائرات المقاتلة والدبابات والقفز المظلي وقاذفات الصواريخ والمدفعية الثقيلة ومعارك المشاة الضارية في بوتقة واحدة.",
+        category: "pc-games",
+        subcategory: "اكشن",
+        type: "game",
+        downloads: 11600000,
+        rating: 4.6,
+        size: "14 GB",
+        image: "https://th.bing.com/th/id/OIP.akX4VH7zLeu04YsXiAnWOgHaEK?w=160&h=108&c=7&qlt=90&bgcl=b28c0c&r=0&o=6&pid=13.1",
+        screenshots: [
+            "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2807960/ca29b92919b323934f6199b8c3fe8454ea697973/ss_ca29b92919b323934f6199b8c3fe8454ea697973.jpg",
+            "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2807960/6b43d1ae44748a7df141e9f485a5e574f8fce5bd/ss_6b43d1ae44748a7df141e9f485a5e574f8fce5bd.600x338.jpg",
+            "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2807960/eb944cda3be9eafb4c989cd54a637842d8adafe6/ss_eb944cda3be9eafb4c989cd54a637842d8adafe6.600x338.jpg"
+        ],
+        specs: {
+            cpu: "Intel Core i7-10700, AMD Ryzen 7 3700X",
+            ram: "16 GB RAM",
+            gpu: "Nvidia RTX 3060Ti, AMD Radeon RX 6700-XT, Intel Arc B580Nvidia RTX 3060Ti, AMD Radeon RX 6700-XT, Intel Arc B580",
+            os: "Windows 11",
+            storage: "80 GB مساحة حرة"
+        },
+        downloadLinks: [
+            { name: "النسخة الكاملة", url: "https://ouo.io/0CH7D6", size: "80 GB" }
+        ],
+        featured: true,
+        trending: true
+    },
+    {
+        id: "eurotrucksim2",
+        title: "Euro Truck Simulator 2",
+        description: "انطلق في رحلة عبر أوروبا كملك للطرق، سائق شاحنة ينقل شحنات مهمة عبر مسافات شاسعة! مع عشرات المدن لاستكشافها، سيتم اختبار قدرتك على التحمل ومهارتك وسرعتك إلى أقصى حد.",
+        category: "pc-games",
+        subcategory: "مغامرة",
+        type: "game",
+        downloads: 1460000,
+        rating: 3.9,
+        size: "14 GB",
+        image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/9a81dc3126c56637297b654f9dcac057cfd79b77/header.jpg?t=1764266628",
+        screenshots: [
+            "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/ss_e040f74641ac21f15e3ec7c2415fc8b4de0b6bf9.600x338.jpg",
+            "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/ss_edbff61a062a49d1d97269e53b8afbffde05bb24.600x338.jpg",
+            "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/ss_53bcdc903f1f2ef18ee12612627f1c3b59c7c1da.600x338.jpg"
+        ],
+        specs: {
+            cpu: "Intel Core i5-9600 or AMD Ryzen 5 3600 or similar",
+            ram: "12 GB RAM",
+            gpu: "NVIDIA GeForce GTX 1660 or AMD Radeon RX 590 (2GB VRAM)",
+            os: "Windows 10 64-bit",
+            storage: "25 GB مساحة حرة"
+        },
+        downloadLinks: [
+            { name: "النسخة الكاملة", url: "https://ouo.io/5AupXta", size: "25 GB" }
+        ],
+        featured: true,
+        trending: true
+    },
+    {
         id: "pubg_mobile",
         title: "PUBG Mobile",
         description: "لعبة باتل رويال شهيرة على الجوال. 100 لاعب يتقاتلون للبقاء حتى النهاية على جزيرة ضخمة.",
