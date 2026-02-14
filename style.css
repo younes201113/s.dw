@@ -1827,13 +1827,35 @@ html {
     .slider-rating, .slider-size, .slider-downloads { width: fit-content; }
     .slider-btn { padding: 12px 20px; font-size: 1rem; }
 }
-/* إخفاء أي قائمة ثانية */
-nav:not(.main-nav) {
-    display: none !important;
+/* القائمة الجانبية */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--primary-color);
+    z-index: 9999;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
 }
 
-/* أو إخفاء أي عنصر فيه هذه الكلمات */
-[class*="menu"]:not(.main-nav),
-[class*="categories"]:not(.main-nav) {
-    display: none !important;
+.sidebar.active {
+    right: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.close-sidebar {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
