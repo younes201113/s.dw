@@ -1101,3 +1101,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 1000);
 });
+// تشغيل القائمة الجانبية
+document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.getElementById('menuToggle');
+    const closeBtn = document.getElementById('closeSidebar');
+    const sidebar = document.getElementById('sidebar');
+
+    if (menuBtn && sidebar) {
+        menuBtn.addEventListener('click', function() {
+            sidebar.classList.add('active');
+        });
+    }
+
+    if (closeBtn && sidebar) {
+        closeBtn.addEventListener('click', function() {
+            sidebar.classList.remove('active');
+        });
+    }
+});
