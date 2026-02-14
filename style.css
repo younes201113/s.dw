@@ -229,56 +229,96 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* القائمة الرئيسية تحت الشريط */
+/* ===== القوائم الخمسة ===== */
 .main-nav {
     background-color: var(--secondary-color);
-    height: var(--nav-height);
+    height: 50px;  /* ارتفاع مناسب */
     display: flex;
     align-items: center;
-    overflow-x: auto;
-    white-space: nowrap;
+    border-bottom: 2px solid var(--accent-color);
 }
 
 .main-nav ul {
     display: flex;
     list-style: none;
-    max-width: 1400px;
-    margin: 20px;
     width: 100%;
+    max-width: 1200px;  /* عرض مناسب */
+    margin: 0 auto;
     padding: 0 20px;
+    gap: 0;  /* إزالة الفجوات بين الأزرار */
+    height: 100%;
 }
 
 .main-nav li {
-    margin-left: 20px;
+    flex: 1;  /* كل زر يأخذ مساحة متساوية */
+    height: 100%;
+    text-align: center;
 }
 
 .main-nav a {
-    color: var(--text-color);
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    display: block;
-    font-weight: 500;
-    transition: background-color 0.2s;
-}
-
-.main-nav a:hover,
-.main-nav a.active {
-    background-color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     color: white;
-    position: relative;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    padding: 0 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    white-space: nowrap;  /* منع كسر النص */
 }
 
-.main-nav a.active::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    right: 50%;
-    transform: translateX(50%);
-    width: 10px;
-    height: 10px;
-    background-color: var(--accent-color);
-    clip-path: polygon(50% 100%, 0 0, 100% 0);
+/* للشاشات المتوسطة */
+@media (max-width: 992px) {
+    .main-nav a {
+        font-size: 0.9rem;
+        gap: 5px;
+    }
+    
+    .main-nav a i {
+        font-size: 1rem;
+    }
+}
+
+/* للشاشات الصغيرة (التابلت) */
+@media (max-width: 768px) {
+    .main-nav {
+        height: 45px;
+    }
+    
+    .main-nav a {
+        font-size: 0.8rem;
+        padding: 0 5px;
+    }
+    
+    .main-nav a i {
+        display: none;  /* إخفاء الأيقونات في الشاشات الصغيرة لتوفير مساحة */
+    }
+}
+
+/* للشاشات الصغيرة جداً (الجوال) */
+@media (max-width: 480px) {
+    .main-nav {
+        overflow-x: auto;  /* تمرير أفقي إذا لزم الأمر */
+    }
+    
+    .main-nav ul {
+        width: max-content;
+        padding: 0 10px;
+    }
+    
+    .main-nav li {
+        flex: 0 0 auto;
+        min-width: 80px;
+    }
+    
+    .main-nav a {
+        font-size: 0.75rem;
+        padding: 0 8px;
+    }
 }
 
 /* حاوية التصفية */
