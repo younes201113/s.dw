@@ -27,6 +27,34 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+
+    <url>
+        <loc>https://snoydown.onrender.com/game.html?id=forzahorizon5</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://snoydown.onrender.com/game.html?id=buckshotroulette</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://snoydown.onrender.com/game.html?id=photoshop</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://snoydown.onrender.com/game.html?id=Red%20Dead%20Redemption%202</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
     
     <!-- أضف روابط لكل لعبة -->
     <!-- ... -->
