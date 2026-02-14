@@ -439,14 +439,14 @@ const gameData = [
         category: "pc-games",
         subcategory: "اكشن",
         type: "game",
-        downloads: 25000000,
+        downloads: 30000000,
         rating: 4.8,
         size: "150 GB",
         // صور بسيطة تعمل
-        image: "https://uptogames.net/wp-content/uploads/2024/11/Red-Dead-Redemption-2-80x80.webp",
+        image: "https://cdn.nichesites.pikoya.com/gamesgallery_io/images/games/62789/o_gallery_300x300.jpg",
         screenshots: [
-            "https://tse1.mm.bing.net/th/id/OIP.QKEUB1AjCRXB7_nV1DLYEgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
-            "https://tse4.mm.bing.net/th/id/OIP.DWia3iAzs9PzRi_8BdBaHwHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
+            "https://cdn.nichesites.pikoya.com/gamesgallery_io/images/games/62789/gallery/92266.jpg",
+            "https://cdn.nichesites.pikoya.com/gamesgallery_io/images/games/62789/gallery/92267.jpg"
         ],
         specs: {
             cpu: "Intel Core i5-2500k",
