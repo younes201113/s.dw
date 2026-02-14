@@ -902,3 +902,202 @@ function getTypeName(type) {
 
 // تشغيل الدالة
 setTimeout(ORGANIZE_GAMES_BY_CATEGORY, 2000);
+
+
+// ========== سلايدر الألعاب التلقائي ==========
+function initAutoSlider() {
+    console.log('🎬 تشغيل السلايدر التلقائي...');
+    
+    const sliderWrapper = document.getElementById('featuredSlider');
+    if (!sliderWrapper) {
+        console.error('❌ السلايدر غير موجود في الصفحة');
+        return;
+    }
+    
+    // جلب الألعاب من البيانات
+    if (!window.gameData || window.gameData.length === 0) {
+        console.error('❌ لا توجد ألعاب في قاعدة البيانات');
+        return;
+    }
+    
+    // خذ أول 5 ألعاب أو كل الألعاب إذا أقل
+    const sliderGames = window.gameData.slice(0, 5);
+    console.log(`🎮 تم تجهيز ${sliderGames.length} لعبة للسلايدر`);
+    
+    // تفريغ السلايدر
+    sliderWrapper.innerHTML = '';
+    
+    // إنشاء السلايدات
+    sliderGames.forEach((game, index) => {
+        // استخدم الصورة الأولى من screenshots إذا موجودة
+        let slideImage = game.image;
+        if (game.screenshots && game.screenshots.length > 0) {
+            slideImage = game.screenshots[0]; // أول صورة من داخل اللعبة
+        }
+        
+        const slide = document.createElement('div');
+        slide.className = `slider-item ${index === 0 ? 'active' : ''}`;
+        
+        slide.innerHTML = `
+            <img src="${slideImage}" 
+                 alt="${game.title}" 
+                 class="slider-image"
+                 onerror="this.src='${game.image}'">
+            <div class="slider-overlay">
+                <div class="slider-content">
+                    <span class="slider-tag">
+                        ${getCategoryIcon(game.category)} ${getCategoryName(game.category)}
+                    </span>
+                    <h2 class="slider-title">${game.title}</h2>
+                    <p class="slider-desc">${game.description.substring(0, 120)}...</p>
+                    <div class="slider-meta">
+                        <span class="slider-rating">
+                            <i class="fas fa-star"></i> ${game.rating}/5
+                        </span>
+                        <span class="slider-size">
+                            <i class="fas fa-database"></i> ${game.size}
+                        </span>
+                        <span class="slider-downloads">
+                            <i class="fas fa-download"></i> ${formatNumber(game.downloads)}
+                        </span>
+                    </div>
+                    <a href="game.html?id=${game.id}" class="slider-btn">
+                        <i class="fas fa-info-circle"></i> عرض التفاصيل
+                    </a>
+                </div>
+            </div>
+        `;
+        
+        sliderWrapper.appendChild(slide);
+    });
+    
+    // تحديث النقاط
+    updateSliderDots(sliderGames.length);
+    
+    // تشغيل السلايدر
+    startSlider();
+}
+
+// أيقونة التصنيف
+function getCategoryIcon(category) {
+    const icons = {
+        'pc-games': '🖥️',
+        'mobile-games': '📱',
+        'programs': '💻',
+        'apps': '📲',
+        'apk': '🔒'
+    };
+    return icons[category] || '🎮';
+}
+
+// اسم التصنيف بالعربي
+function getCategoryName(category) {
+    const names = {
+        'pc-games': 'ألعاب PC',
+        'mobile-games': 'ألعاب جوال',
+        'programs': 'برامج',
+        'apps': 'تطبيقات',
+        'apk': 'APK'
+    };
+    return names[category] || category;
+}
+
+// تحديث النقاط السفلية
+function updateSliderDots(count) {
+    const dotsContainer = document.getElementById('sliderDots');
+    if (!dotsContainer) return;
+    
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < count; i++) {
+        const dot = document.createElement('span');
+        dot.className = `dot ${i === 0 ? 'active' : ''}`;
+        dot.setAttribute('data-index', i);
+        dotsContainer.appendChild(dot);
+    }
+}
+
+// تشغيل السلايدر
+function startSlider() {
+    const slides = document.querySelectorAll('.slider-item');
+    const dots = document.querySelectorAll('.slider-dots .dot');
+    const prevBtn = document.getElementById('sliderPrev');
+    const nextBtn = document.getElementById('sliderNext');
+    
+    if (slides.length === 0) return;
+    
+    let currentSlide = 0;
+    let slideInterval;
+    
+    function showSlide(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        slides[index].classList.add('active');
+        if (dots[index]) dots[index].classList.add('active');
+        
+        currentSlide = index;
+    }
+    
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+    
+    function startAutoPlay() {
+        slideInterval = setInterval(nextSlide, 5000);
+    }
+    
+    function stopAutoPlay() {
+        clearInterval(slideInterval);
+    }
+    
+    // أحداث الأزرار
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            stopAutoPlay();
+            startAutoPlay();
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            stopAutoPlay();
+            startAutoPlay();
+        });
+    }
+    
+    // أحداث النقاط
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            stopAutoPlay();
+            startAutoPlay();
+        });
+    });
+    
+    // إيقاف عند تمرير الماوس
+    const slider = document.querySelector('.featured-slider');
+    if (slider) {
+        slider.addEventListener('mouseenter', stopAutoPlay);
+        slider.addEventListener('mouseleave', startAutoPlay);
+    }
+    
+    startAutoPlay();
+}
+
+// تشغيل السلايدر بعد تحميل البيانات
+document.addEventListener('DOMContentLoaded', function() {
+    // انتظر شوية عشان البيانات تحمل
+    setTimeout(() => {
+        if (window.gameData && window.gameData.length > 0) {
+            initAutoSlider();
+        } else {
+            console.log('⏳ انتظار تحميل الألعاب...');
+            // حاول مرة ثانية بعد ثانية
+            setTimeout(initAutoSlider, 2000);
+        }
+    }, 1000);
+});
